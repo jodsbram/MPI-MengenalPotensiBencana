@@ -4694,8 +4694,8 @@ user-select:none;
 
     width:100% !important;
 
-    min-height:720px !important;
-    height:720px !important;
+min-height:max(100vh,720px) !important;
+height:auto !important;
 
     overflow-y:auto !important;
     overflow-x:hidden !important;
@@ -6293,7 +6293,7 @@ id="glossaryScreen">
                     <button
                         class="wordsearch-new-btn"
                         onclick="startWordSearch()">
-                        ↻ Acak Baru
+                        ↻ Acak Huruf
                     </button>
                 </div>
 
@@ -6316,7 +6316,7 @@ id="glossaryScreen">
                 <div
                     class="game-feedback info"
                     id="wordSearchFeedback">
-                    Klik huruf pertama lalu klik huruf terakhir kata.
+                    Tekan dan tahan huruf awal, lalu geser hingga huruf terakhir kata.
                 </div>
 
             </div>
@@ -7937,16 +7937,20 @@ function patternLearnAnswer(correct){
 const playStats={
     matchTotal:6,
     matchCorrect:0,
-    regionTotal:4,
+
+    regionTotal:8,
     regionCorrect:0,
     regionAnswered:0,
+
     detectiveTotal:3,
     detectiveCorrect:0,
     detectiveAnswered:0,
+
     mitigationTotal:2,
     mitigationCorrect:0,
     mitigationAnswered:0,
-    quickTotal:6,
+
+    quickTotal:0,
     quickCorrect:0,
     quickAnswered:0
 };
