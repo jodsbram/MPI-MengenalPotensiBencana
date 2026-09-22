@@ -2633,6 +2633,363 @@ position:absolute;
 .quick-option.wrong{background:#fff0ef;color:#8b332d;}
 .quick-option:disabled{cursor:default;}
 
+/* =========================================================
+   M3 - CARI KATA 15x15
+========================================================= */
+
+.wordsearch-layout{
+    width:min(1180px,90%);
+    height:68%;
+    margin:12px auto 0;
+    display:grid;
+    grid-template-columns:1fr 280px;
+    gap:18px;
+    align-items:stretch;
+}
+
+.wordsearch-board-wrap{
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+}
+
+.wordsearch-status{
+    height:42px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:8px;
+    color:#17445a;
+    font-size:clamp(12px,.9vw,16px);
+    font-weight:900;
+}
+
+.wordsearch-new-btn{
+    border:none;
+    border-radius:11px;
+    padding:8px 15px;
+    background:#168fb5;
+    color:#fff;
+    font-weight:900;
+}
+
+.wordsearch-board{
+    flex:1;
+    min-height:0;
+
+    display:grid;
+    grid-template-columns:repeat(15,1fr);
+    grid-template-rows:repeat(15,1fr);
+
+    gap:2px;
+
+    padding:8px;
+
+    background:#cfe6ec;
+
+    border-radius:18px;
+    box-shadow:0 10px 26px rgba(0,60,90,.13);
+
+    user-select:none;
+    touch-action: none;
+}
+
+.word-cell{
+    min-width:0;
+    min-height:0;
+
+    border:none;
+    border-radius:5px;
+
+    background:#ffffff;
+    color:#183848;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:clamp(10px,.92vw,17px);
+    font-weight:950;
+
+    cursor:pointer;
+
+    transition:
+        transform .1s ease,
+        background .1s ease,
+        color .1s ease;
+}
+
+.word-cell:hover{
+    transform:scale(1.08);
+    background:#e4f5f8;
+}
+
+.word-cell.selected{
+    background:#ffe16a;
+    color:#4e3c00;
+}
+
+.word-cell.found{
+    background:#2cad71;
+    color:#ffffff;
+    transform:scale(.96);
+}
+
+.wordsearch-side{
+    background:#ffffff;
+    border-radius:20px;
+    padding:17px;
+
+    box-shadow:0 10px 26px rgba(0,60,90,.10);
+
+    display:flex;
+    flex-direction:column;
+
+    overflow:hidden;
+}
+
+.wordsearch-side h3{
+    margin:0 0 12px;
+    color:#105c9f;
+    font-size:clamp(16px,1.25vw,22px);
+}
+
+.wordsearch-list{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+}
+
+.word-item{
+    padding:8px 9px;
+
+    border-radius:10px;
+
+    background:#eef7f9;
+
+    color:#16445a;
+
+    font-size:clamp(10px,.72vw,13px);
+    font-weight:900;
+
+    text-align:center;
+}
+
+.word-item.found{
+    background:#dff5e8;
+    color:#187244;
+    text-decoration:line-through;
+}
+
+.wordsearch-side .game-feedback{
+    margin-top:auto;
+}
+
+
+/* =========================================================
+   M6 - TANGKAP KATA
+========================================================= */
+
+.catch-hud{
+    width:min(1120px,88%);
+    margin:12px auto 8px;
+
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:9px;
+}
+
+.catch-hud > div{
+    min-height:48px;
+
+    background:#ffffff;
+    border-radius:14px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:7px;
+
+    color:#31515f;
+
+    font-size:clamp(10px,.75vw,13px);
+    font-weight:900;
+
+    box-shadow:0 6px 16px rgba(0,60,90,.08);
+}
+
+.catch-hud strong{
+    color:#0d6597;
+    font-size:clamp(17px,1.4vw,24px);
+}
+
+.catch-arena{
+    position:relative;
+
+    width:min(1120px,88%);
+    height:55%;
+
+    margin:0 auto;
+
+    overflow:hidden;
+
+    border-radius:24px;
+
+    background:
+        radial-gradient(circle at 20% 20%,rgba(255,255,255,.9),transparent 25%),
+        linear-gradient(135deg,#dff6f8,#ccecf1);
+
+    border:2px solid rgba(22,143,181,.15);
+
+    box-shadow:
+        inset 0 0 45px rgba(22,143,181,.08),
+        0 12px 28px rgba(0,60,90,.12);
+}
+
+.catch-start-panel{
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:30px;
+}
+
+.catch-start-icon{
+    font-size:clamp(45px,4vw,68px);
+}
+
+.catch-start-panel h3{
+    margin:7px 0;
+    color:#105c9f;
+    font-size:clamp(22px,2vw,34px);
+}
+
+.catch-start-panel p{
+    width:min(600px,80%);
+    margin:0 0 18px;
+
+    color:#3c606f;
+
+    font-size:clamp(13px,1vw,17px);
+    line-height:1.45;
+    font-weight:800;
+}
+
+.catch-word{
+    position:absolute;
+
+    border:none;
+
+    padding:10px 16px;
+
+    border-radius:999px;
+
+    background:#ffffff;
+
+    color:#16445a;
+
+    font-size:clamp(12px,1vw,18px);
+    font-weight:950;
+
+    box-shadow:0 8px 20px rgba(0,60,90,.15);
+
+    animation:catchWordIn .16s ease;
+
+    white-space:nowrap;
+
+    cursor:pointer;
+
+    transition:
+        transform .12s ease,
+        background .12s ease;
+}
+
+.catch-word:hover{
+    transform:scale(1.08);
+}
+
+.catch-word.good-hit{
+    background:#28aa6b;
+    color:#fff;
+}
+
+.catch-word.bad-hit{
+    background:#e55d54;
+    color:#fff;
+}
+
+.catch-float-score{
+    position:absolute;
+
+    pointer-events:none;
+
+    font-size:22px;
+    font-weight:950;
+
+    animation:catchFloat .7s ease forwards;
+}
+
+.catch-result{
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    background:rgba(255,255,255,.94);
+}
+
+.catch-result h3{
+    margin:5px;
+    font-size:clamp(25px,2.3vw,40px);
+    color:#105c9f;
+}
+
+.catch-result-score{
+    font-size:clamp(37px,4vw,65px);
+    font-weight:950;
+    color:#168fb5;
+}
+
+.catch-result p{
+    color:#3c606f;
+    font-weight:800;
+}
+
+@keyframes catchWordIn{
+    from{
+        opacity:0;
+        transform:scale(.65);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+@keyframes catchFloat{
+    0%{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+    100%{
+        opacity:0;
+        transform:translateY(-45px);
+    }
+}
+
 /* M7 HASIL */
 .result-overall{
     width:min(920px,72%);
@@ -4890,40 +5247,6 @@ Materi pembelajaran: Pahami ragam potensi bencana di Indonesia
 
 </button>
 
-
-<!-- =====================================================
-     BERMAIN
-===================================================== -->
-
-<button
-class="activity-card card-bermain"
-onclick="showScreen('bermainM1')">
-
-
-<div class="activity-icon">
-
-🎮
-
-</div>
-
-
-<h3>
-
-Bermain
-
-</h3>
-
-
-<div class="activity-desc">
-
-Aktivitas interaktif: Asah pemahaman lewat serangkaian tantangan seru
-
-</div>
-
-
-</button>
-
-
 <!-- =====================================================
      BERLATIH
 ===================================================== -->
@@ -4956,6 +5279,36 @@ Latihan pemahaman: Uji wawasan melalui kuis pilihan ganda
 
 </button>
 
+<!-- =====================================================
+     BERMAIN
+===================================================== -->
+
+<button
+class="activity-card card-bermain"
+onclick="showScreen('bermainM1')">
+
+
+<div class="activity-icon">
+
+🎮
+
+</div>
+
+
+<h3>
+
+Bermain
+
+</h3>
+
+
+<div class="activity-desc">
+
+Aktivitas interaktif: Asah pemahaman lewat serangkaian tantangan seru
+
+</div>
+
+</button>
 
 <!-- =====================================================
      SIMULASI
@@ -5801,11 +6154,11 @@ id="glossaryScreen">
             </button>
 
             <button class="game-menu-card c2" onclick="showScreen('bermainM3')">
-                <div class="game-menu-icon">🗺️</div>
-                <h3>Tebak Wilayah</h3>
-                <p>Hubungkan kondisi geografis dengan potensi bencana.</p>
-                <div class="game-badge" id="playBadgeRegion">0 / 4 soal</div>
-            </button>
+    <div class="game-menu-icon">🔎</div>
+    <h3>Cari Kata</h3>
+    <p>Temukan istilah materi yang tersembunyi dalam kotak 15×15.</p>
+    <div class="game-badge" id="playBadgeRegion">0 / 8 kata</div>
+</button>
 
             <button class="game-menu-card c3" onclick="showScreen('bermainM4')">
                 <div class="game-menu-icon">🔍</div>
@@ -5822,11 +6175,11 @@ id="glossaryScreen">
             </button>
 
             <button class="game-menu-card c5" onclick="showScreen('bermainM6')">
-                <div class="game-menu-icon">⚡</div>
-                <h3>Tantangan Cepat</h3>
-                <p>Pilih jawaban yang paling tepat dari dua pilihan.</p>
-                <div class="game-badge" id="playBadgeQuick">0 / 6 soal</div>
-            </button>
+    <div class="game-menu-icon">⚡</div>
+    <h3>Tangkap Kata</h3>
+    <p>Tangkap sebanyak mungkin istilah materi dalam 30 detik.</p>
+    <div class="game-badge" id="playBadgeQuick">Belum dimainkan</div>
+</button>
         </div>
 
         <div class="game-result-shortcut">
@@ -5888,31 +6241,78 @@ id="glossaryScreen">
 
 
 <!-- =========================================================
-     M3 - TEBAK WILAYAH
+     M3 - CARI KATA
 ========================================================= -->
 <section class="screen game-screen" id="bermainM3">
     <div class="game-shell">
+
         <div class="game-heading">
-            <div class="game-kicker">BERMAIN • TEBAK WILAYAH</div>
-            <h2 class="game-title">Kondisi Wilayah, Bencana Apa?</h2>
-            <p class="game-subtitle">Baca kondisi geografisnya, lalu pilih potensi bencana yang paling relevan.</p>
+            <div class="game-kicker">BERMAIN • CARI KATA</div>
+            <h2 class="game-title">🔎 Temukan Kata Tersembunyi!</h2>
+            <p class="game-subtitle">
+                Temukan 8 istilah yang berasal dari materi Belajar.
+                Susunan kata akan berbeda setiap permainan.
+            </p>
         </div>
 
-        <div class="case-card">
-            <div class="case-number" id="regionCaseNo">KASUS 1 / 4</div>
-            <h3 id="regionScenario">Memuat kasus...</h3>
-        </div>
-        <div class="game-option-grid" id="regionOptions"></div>
-        <div class="case-controls">
-            <div class="game-feedback info" id="regionFeedback">Pilih satu jawaban.</div>
-            <button class="game-small-btn" id="regionNextBtn" onclick="nextRegionCase()" style="display:none">Kasus Berikutnya →</button>
+        <div class="wordsearch-layout">
+
+            <div class="wordsearch-board-wrap">
+
+                <div class="wordsearch-status">
+                    <span>🔎 Ditemukan:
+                        <b id="wordSearchFound">0 / 8</b>
+                    </span>
+
+                    <button
+                        class="wordsearch-new-btn"
+                        onclick="startWordSearch()">
+                        ↻ Acak Baru
+                    </button>
+                </div>
+
+                <div
+                    class="wordsearch-board"
+                    id="wordSearchBoard">
+                </div>
+
+            </div>
+
+            <div class="wordsearch-side">
+
+                <h3>🎯 Cari 8 Kata Ini</h3>
+
+                <div
+                    class="wordsearch-list"
+                    id="wordSearchList">
+                </div>
+
+                <div
+                    class="game-feedback info"
+                    id="wordSearchFeedback">
+                    Klik huruf pertama lalu klik huruf terakhir kata.
+                </div>
+
+            </div>
+
         </div>
 
         <div class="game-nav">
-            <button class="game-nav-btn prev" onclick="showScreen('bermainM1')">← Pilih Tantangan</button>
+            <button
+                class="game-nav-btn prev"
+                onclick="showScreen('bermainM1')">
+                ← Pilih Tantangan
+            </button>
+
             <div class="game-page">Bermain 3 / 7</div>
-            <button class="game-nav-btn next" onclick="showScreen('bermainM4')">Tantangan Berikutnya →</button>
+
+            <button
+                class="game-nav-btn next"
+                onclick="showScreen('bermainM4')">
+                Tantangan Berikutnya →
+            </button>
         </div>
+
     </div>
 </section>
 
@@ -5982,31 +6382,87 @@ id="glossaryScreen">
 
 
 <!-- =========================================================
-     M6 - TANTANGAN CEPAT
+     M6 - TANGKAP KATA
 ========================================================= -->
 <section class="screen game-screen" id="bermainM6">
     <div class="game-shell">
+
         <div class="game-heading">
-            <div class="game-kicker">BERMAIN • TANTANGAN CEPAT</div>
-            <h2 class="game-title">Pilih dengan Cepat!</h2>
-            <p class="game-subtitle">Baca petunjuknya dan pilih jawaban yang paling tepat dari dua pilihan.</p>
+            <div class="game-kicker">BERMAIN • TANGKAP KATA</div>
+            <h2 class="game-title">⚡ Tangkap Kata!</h2>
+            <p class="game-subtitle">
+                Sentuh sebanyak mungkin istilah yang berasal dari materi.
+                Hindari kata pengecoh!
+            </p>
         </div>
 
-        <div class="quick-box">
-            <div class="quick-count" id="quickCount">SOAL 1 / 6</div>
-            <h3 id="quickPrompt">Memuat soal...</h3>
+        <div class="catch-hud">
+
+            <div>
+                ⏱️ WAKTU
+                <strong id="catchTimer">30</strong>
+            </div>
+
+            <div>
+                ⭐ SKOR
+                <strong id="catchScore">0</strong>
+            </div>
+
+            <div>
+                ✅ BENAR
+                <strong id="catchCorrect">0</strong>
+            </div>
+
+            <div>
+                ❌ SALAH
+                <strong id="catchWrong">0</strong>
+            </div>
+
+            <div>
+                🔥 COMBO
+                <strong id="catchCombo">0</strong>
+            </div>
+
         </div>
-        <div class="quick-options" id="quickOptions"></div>
-        <div class="case-controls" style="width:min(920px,74%)">
-            <div class="game-feedback info" id="quickFeedback">Pilih satu jawaban.</div>
-            <button class="game-small-btn" id="quickNextBtn" onclick="nextQuickQuestion()" style="display:none">Soal Berikutnya →</button>
+
+        <div class="catch-arena" id="catchArena">
+
+            <div class="catch-start-panel" id="catchStartPanel">
+                <div class="catch-start-icon">⚡</div>
+
+                <h3>Siap Menguji Kecepatanmu?</h3>
+
+                <p>
+                    Kata akan muncul dengan cepat di berbagai tempat.
+                    Tekan hanya istilah yang berhubungan dengan materi
+                    potensi bencana alam.
+                </p>
+
+                <button
+                    class="game-small-btn"
+                    onclick="startCatchGame()">
+                    ▶ Mulai 30 Detik
+                </button>
+            </div>
+
         </div>
 
         <div class="game-nav">
-            <button class="game-nav-btn prev" onclick="showScreen('bermainM1')">← Pilih Tantangan</button>
+            <button
+                class="game-nav-btn prev"
+                onclick="showScreen('bermainM1')">
+                ← Pilih Tantangan
+            </button>
+
             <div class="game-page">Bermain 6 / 7</div>
-            <button class="game-nav-btn next" onclick="showScreen('bermainM7')">Lihat Hasil →</button>
+
+            <button
+                class="game-nav-btn next"
+                onclick="showScreen('bermainM7')">
+                Lihat Hasil →
+            </button>
         </div>
+
     </div>
 </section>
 
@@ -6026,10 +6482,10 @@ id="glossaryScreen">
 
         <div class="result-grid">
             <div class="result-card"><div class="result-icon">🧩</div><h3>Mengenali Bencana</h3><div class="result-percent" id="resultMatchPct">0%</div><div class="result-track"><div class="result-fill" id="resultMatchFill"></div></div><div class="result-note">Pasangan yang berhasil diselesaikan.</div></div>
-            <div class="result-card"><div class="result-icon">🗺️</div><h3>Kondisi Wilayah</h3><div class="result-percent" id="resultRegionPct">0%</div><div class="result-track"><div class="result-fill" id="resultRegionFill"></div></div><div class="result-note">Ketepatan menjawab kasus geografis.</div></div>
+            <div class="result-card"><div class="result-icon">🗺️</div><h3>Cari Kata</h3><div class="result-percent" id="resultRegionPct">0%</div><div class="result-track"><div class="result-fill" id="resultRegionFill"></div></div><div class="result-note">Persentase istilah yang berhasil ditemukan.</div></div>
             <div class="result-card"><div class="result-icon">🔍</div><h3>Memilih Informasi</h3><div class="result-percent" id="resultDetectivePct">0%</div><div class="result-track"><div class="result-fill" id="resultDetectiveFill"></div></div><div class="result-note">Kasus yang benar pada pemeriksaan pertama.</div></div>
             <div class="result-card"><div class="result-icon">🛡️</div><h3>Menyusun Mitigasi</h3><div class="result-percent" id="resultMitigationPct">0%</div><div class="result-track"><div class="result-fill" id="resultMitigationFill"></div></div><div class="result-note">Urutan yang benar pada pemeriksaan pertama.</div></div>
-            <div class="result-card"><div class="result-icon">⚡</div><h3>Tantangan Cepat</h3><div class="result-percent" id="resultQuickPct">0%</div><div class="result-track"><div class="result-fill" id="resultQuickFill"></div></div><div class="result-note">Ketepatan enam soal penguatan konsep.</div></div>
+            <div class="result-card"><div class="result-icon">⚡</div><h3>Tangkap Kata</h3><div class="result-percent" id="resultQuickPct">0%</div><div class="result-track"><div class="result-fill" id="resultQuickFill"></div></div><div class="result-note">Akurasi menangkap istilah materi dalam 30 detik.</div></div>
         </div>
 
         <div class="result-actions">
@@ -7062,6 +7518,10 @@ function showScreen(id){
     if(id === "simulasiSummary"){
         renderSimulationSummary();
     }
+
+    if(id === "bermainM3"){
+    startWordSearch();
+}
 }
 
 
@@ -7475,10 +7935,15 @@ function setGameFeedback(id,type,text){
 function updatePlayMenuBadges(){
     const pairs=[
         ['playBadgeMatch',playStats.matchCorrect+' / '+playStats.matchTotal+' cocok'],
-        ['playBadgeRegion',playStats.regionAnswered+' / '+playStats.regionTotal+' soal'],
+        ['playBadgeRegion',playStats.regionCorrect+' / '+playStats.regionTotal+' kata'],
         ['playBadgeDetective',playStats.detectiveAnswered+' / '+playStats.detectiveTotal+' kasus'],
         ['playBadgeMitigation',playStats.mitigationAnswered+' / '+playStats.mitigationTotal+' kasus'],
-        ['playBadgeQuick',playStats.quickAnswered+' / '+playStats.quickTotal+' soal']
+        [
+    'playBadgeQuick',
+    playStats.quickAnswered
+        ? playStats.quickCorrect+' benar'
+        : 'Belum dimainkan'
+]
     ];
     pairs.forEach(([id,text])=>{
         const el=document.getElementById(id);
@@ -7567,94 +8032,452 @@ function resetMatchGame(){
 }
 
 /* =========================================================
-   M3 - TEBAK WILAYAH
+   M3 - CARI KATA 15x15
 ========================================================= */
 
-const regionCases=[
-    {
-        scenario:'Sebuah wilayah berada di pesisir dan dekat sumber gempa bawah laut. Potensi bencana apa yang perlu mendapat perhatian khusus?',
-        options:['🌧️ Banjir','🌊 Tsunami','☀️ Kekeringan','⛰️ Longsor'],
-        answer:1,
-        explain:'Wilayah pesisir yang berhadapan dengan sumber tsunami perlu memiliki kesiapsiagaan terhadap tsunami.'
-    },
-    {
-        scenario:'Wilayah perbukitan memiliki lereng curam dan mengalami hujan deras selama beberapa hari. Potensi bencana yang paling relevan adalah...',
-        options:['🌋 Erupsi','🌍 Gempa','⛰️ Tanah Longsor','☀️ Kekeringan'],
-        answer:2,
-        explain:'Lereng curam dan hujan tinggi dapat menurunkan kestabilan lereng sehingga potensi longsor meningkat.'
-    },
-    {
-        scenario:'Permukiman berada di dataran rendah, dilalui sungai, dan mengalami hujan sangat tinggi. Potensi bencana yang paling relevan adalah...',
-        options:['🌧️ Banjir','🌊 Tsunami','🌋 Erupsi','☀️ Kekeringan'],
-        answer:0,
-        explain:'Dataran rendah, aliran sungai, dan curah hujan tinggi merupakan informasi penting ketika menganalisis potensi banjir.'
-    },
-    {
-        scenario:'Sebuah wilayah berada di sekitar gunung api aktif dan termasuk kawasan yang dipantau aktivitas vulkaniknya. Potensi utama yang perlu diperhatikan adalah...',
-        options:['🌋 Erupsi','🌧️ Banjir','☀️ Kekeringan','🌊 Tsunami'],
-        answer:0,
-        explain:'Kedekatan dengan gunung api aktif berkaitan langsung dengan potensi bahaya erupsi dan bahaya vulkanik lainnya.'
-    }
+const wordSearchBank = [
+    "GEMPA",
+    "TSUNAMI",
+    "ERUPSI",
+    "BANJIR",
+    "LONGSOR",
+    "KEKERINGAN",
+    "MAGMA",
+    "SESAR",
+    "MITIGASI",
+    "EVAKUASI",
+    "DRAINASE",
+    "PESISIR",
+    "VEGETASI",
+    "TEKTONIK",
+    "VULKANIK",
+    "MANGROVE",
+    "ELEVASI",
+    "TOPOGRAFI",
+    "LIKUIFAKSI",
+    "LEMPENG"
 ];
 
-let regionIndex=0;
-let regionCaseAnswered=false;
+const WORDSEARCH_SIZE = 15;
+const WORDSEARCH_COUNT = 8;
 
-function renderRegionCase(){
-    const q=regionCases[regionIndex];
-    const num=document.getElementById('regionCaseNo');
-    const scenario=document.getElementById('regionScenario');
-    const options=document.getElementById('regionOptions');
-    const next=document.getElementById('regionNextBtn');
-    if(!q || !num || !scenario || !options) return;
+let wordSearchGrid = [];
+let wordSearchWords = [];
+let wordSearchPlaced = [];
+let wordSearchFound = new Set();
 
-    regionCaseAnswered=false;
-    num.textContent='KASUS '+(regionIndex+1)+' / '+regionCases.length;
-    scenario.textContent=q.scenario;
-    options.innerHTML='';
-    q.options.forEach((label,i)=>{
-        const btn=document.createElement('button');
-        btn.className='game-option';
-        btn.textContent=label;
-        btn.onclick=()=>answerRegionCase(i,btn);
-        options.appendChild(btn);
-    });
-    if(next) next.style.display='none';
-    setGameFeedback('regionFeedback','info','Pilih satu jawaban.');
+let wordSearchFirstCell = null;
+
+
+/* ACAK ARRAY */
+function shuffleArray(arr){
+    const copy = [...arr];
+
+    for(let i = copy.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+
+    return copy;
 }
 
-function answerRegionCase(optionIndex,button){
-    if(regionCaseAnswered) return;
-    regionCaseAnswered=true;
-    const q=regionCases[regionIndex];
-    const buttons=[...document.querySelectorAll('#regionOptions .game-option')];
-    buttons.forEach(b=>b.disabled=true);
-    buttons[q.answer].classList.add('correct');
 
-    playStats.regionAnswered=Math.max(playStats.regionAnswered,regionIndex+1);
-    if(optionIndex===q.answer){
-        button.classList.add('correct');
-        playStats.regionCorrect++;
-        setGameFeedback('regionFeedback','ok','Tepat! '+q.explain);
-    }else{
-        button.classList.add('wrong');
-        setGameFeedback('regionFeedback','bad','Belum tepat. '+q.explain);
+/* MULAI GAME BARU */
+function startWordSearch(){
+
+    wordSearchGrid = Array.from(
+        {length:WORDSEARCH_SIZE},
+        () => Array(WORDSEARCH_SIZE).fill("")
+    );
+
+    wordSearchFound = new Set();
+    wordSearchFirstCell = null;
+    wordSearchPlaced = [];
+
+    wordSearchWords =
+        shuffleArray(wordSearchBank)
+        .slice(0,WORDSEARCH_COUNT);
+
+    const directions = [
+    [0,1],   // horizontal kiri → kanan
+    [0,-1],  // horizontal kanan → kiri
+    [1,0],   // vertikal atas → bawah
+    [-1,0]   // vertikal bawah → atas
+];
+
+
+    wordSearchWords.forEach(word => {
+
+        let success = false;
+
+        for(let attempt=0; attempt<400 && !success; attempt++){
+
+            const [dr,dc] =
+                directions[
+                    Math.floor(Math.random()*directions.length)
+                ];
+
+            const startRow =
+                Math.floor(Math.random()*WORDSEARCH_SIZE);
+
+            const startCol =
+                Math.floor(Math.random()*WORDSEARCH_SIZE);
+
+            const endRow =
+                startRow + dr*(word.length-1);
+
+            const endCol =
+                startCol + dc*(word.length-1);
+
+            if(
+                endRow < 0 ||
+                endRow >= WORDSEARCH_SIZE ||
+                endCol < 0 ||
+                endCol >= WORDSEARCH_SIZE
+            ){
+                continue;
+            }
+
+
+            let fits = true;
+
+            for(let i=0;i<word.length;i++){
+
+                const r = startRow + dr*i;
+                const c = startCol + dc*i;
+
+                if(
+                    wordSearchGrid[r][c] !== "" &&
+                    wordSearchGrid[r][c] !== word[i]
+                ){
+                    fits = false;
+                    break;
+                }
+            }
+
+            if(!fits) continue;
+
+
+            const cells = [];
+
+            for(let i=0;i<word.length;i++){
+
+                const r = startRow + dr*i;
+                const c = startCol + dc*i;
+
+                wordSearchGrid[r][c] = word[i];
+
+                cells.push([r,c]);
+            }
+
+
+            wordSearchPlaced.push({
+                word,
+                cells,
+                start:[startRow,startCol],
+                end:[endRow,endCol]
+            });
+
+            success = true;
+        }
+
+    });
+
+
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    for(let r=0;r<WORDSEARCH_SIZE;r++){
+
+        for(let c=0;c<WORDSEARCH_SIZE;c++){
+
+            if(!wordSearchGrid[r][c]){
+
+                wordSearchGrid[r][c] =
+                    alphabet[
+                        Math.floor(Math.random()*alphabet.length)
+                    ];
+            }
+        }
     }
 
-    const next=document.getElementById('regionNextBtn');
-    if(next){
-        next.style.display='inline-block';
-        next.textContent=regionIndex===regionCases.length-1?'Lanjut ke Detektif →':'Kasus Berikutnya →';
-    }
+
+    playStats.regionTotal = WORDSEARCH_COUNT;
+    playStats.regionCorrect = 0;
+    playStats.regionAnswered = 0;
+
+    renderWordSearch();
+
     updatePlayMenuBadges();
 }
 
-function nextRegionCase(){
-    if(regionIndex<regionCases.length-1){
-        regionIndex++;
-        renderRegionCase();
-    }else{
-        showScreen('bermainM4');
+
+/* RENDER PAPAN */
+function renderWordSearch(){
+
+    const board =
+        document.getElementById("wordSearchBoard");
+
+    const list =
+        document.getElementById("wordSearchList");
+
+    if(!board || !list) return;
+
+
+    board.innerHTML = "";
+
+    for(let r=0;r<WORDSEARCH_SIZE;r++){
+
+        for(let c=0;c<WORDSEARCH_SIZE;c++){
+
+            const cell =
+                document.createElement("button");
+
+            cell.className = "word-cell";
+
+            cell.textContent =
+                wordSearchGrid[r][c];
+
+            cell.dataset.row = r;
+            cell.dataset.col = c;
+
+            cell.onpointerdown = (e) => startWordDrag(r,c,e);
+cell.onpointerenter = (e) => moveWordDrag(r,c,e);
+cell.onpointerup = (e) => endWordDrag(r,c,e);
+
+            board.appendChild(cell);
+        }
+    }
+
+
+    list.innerHTML =
+        wordSearchWords
+        .map(word => `
+            <div
+                class="word-item
+                ${wordSearchFound.has(word) ? "found" : ""}"
+                data-word="${word}">
+                ${word}
+            </div>
+        `)
+        .join("");
+
+
+    updateWordSearchStatus();
+}
+
+
+/* PILIH HURUF AWAL + AKHIR */
+let wordSearchDragging = false;
+let wordSearchStart = null;
+let wordSearchCurrentCells = [];
+
+function startWordDrag(row,col,event){
+    event.preventDefault();
+
+    wordSearchDragging = true;
+    wordSearchStart = {row,col};
+
+    clearWordSearchSelection();
+
+    updateWordDragSelection(row,col);
+}
+
+function moveWordDrag(row,col,event){
+    if(!wordSearchDragging) return;
+
+    event.preventDefault();
+
+    updateWordDragSelection(row,col);
+}
+
+function endWordDrag(row,col,event){
+    if(!wordSearchDragging) return;
+
+    event.preventDefault();
+
+    wordSearchDragging = false;
+
+    checkDraggedWord(row,col);
+
+    wordSearchStart = null;
+    wordSearchCurrentCells = [];
+}
+
+function updateWordDragSelection(endRow,endCol){
+    clearWordSearchSelection();
+
+    if(!wordSearchStart) return;
+
+    const startRow = wordSearchStart.row;
+    const startCol = wordSearchStart.col;
+
+    const dr = endRow - startRow;
+    const dc = endCol - startCol;
+
+    let stepRow = 0;
+    let stepCol = 0;
+
+    if(dr === 0 && dc !== 0){
+    // Horizontal
+    stepCol = dc > 0 ? 1 : -1;
+}
+else if(dc === 0 && dr !== 0){
+    // Vertikal
+    stepRow = dr > 0 ? 1 : -1;
+}
+else{
+    // Serong / diagonal tidak diperbolehkan
+    return;
+}
+
+    const length = Math.max(Math.abs(dr),Math.abs(dc)) + 1;
+
+    wordSearchCurrentCells = [];
+
+    for(let i=0;i<length;i++){
+        const r = startRow + stepRow*i;
+        const c = startCol + stepCol*i;
+
+        const cell = document.querySelector(
+            `.word-cell[data-row="${r}"][data-col="${c}"]`
+        );
+
+        if(cell){
+            cell.classList.add("selected");
+            wordSearchCurrentCells.push([r,c]);
+        }
+    }
+}
+
+function checkDraggedWord(endRow,endCol){
+    if(!wordSearchStart) return;
+
+    const start = [
+        wordSearchStart.row,
+        wordSearchStart.col
+    ];
+
+    const end = [endRow,endCol];
+
+    const found = wordSearchPlaced.find(item => {
+
+        if(wordSearchFound.has(item.word)){
+            return false;
+        }
+
+        const normal =
+            item.start[0] === start[0] &&
+            item.start[1] === start[1] &&
+            item.end[0] === end[0] &&
+            item.end[1] === end[1];
+
+        const reverse =
+            item.end[0] === start[0] &&
+            item.end[1] === start[1] &&
+            item.start[0] === end[0] &&
+            item.start[1] === end[1];
+
+        return normal || reverse;
+    });
+
+    if(found){
+        wordSearchFound.add(found.word);
+
+        markFoundWord(found);
+
+        playStats.regionCorrect = wordSearchFound.size;
+        playStats.regionAnswered = wordSearchFound.size;
+
+        setGameFeedback(
+            "wordSearchFeedback",
+            "ok",
+            "Tepat! Kamu menemukan kata " + found.word + "."
+        );
+
+        if(wordSearchFound.size === wordSearchWords.length){
+            setGameFeedback(
+                "wordSearchFeedback",
+                "ok",
+                "🎉 Hebat! Semua kata berhasil ditemukan!"
+            );
+        }
+    }
+    else{
+        setGameFeedback(
+            "wordSearchFeedback",
+            "bad",
+            "Belum tepat. Coba tarik dari huruf awal ke huruf akhir kata."
+        );
+    }
+
+    clearWordSearchSelection();
+    renderWordSearchListOnly();
+    updateWordSearchStatus();
+    updatePlayMenuBadges();
+}
+
+
+/* TANDAI KATA DITEMUKAN */
+function markFoundWord(item){
+
+    item.cells.forEach(([r,c]) => {
+
+        const cell =
+            document.querySelector(
+                `.word-cell[data-row="${r}"][data-col="${c}"]`
+            );
+
+        if(cell){
+            cell.classList.add("found");
+        }
+    });
+}
+
+
+/* HAPUS SELEKSI KUNING */
+function clearWordSearchSelection(){
+
+    document
+    .querySelectorAll(".word-cell.selected")
+    .forEach(cell =>
+        cell.classList.remove("selected")
+    );
+}
+
+
+/* UPDATE DAFTAR */
+function renderWordSearchListOnly(){
+
+    const list =
+        document.getElementById("wordSearchList");
+
+    if(!list) return;
+
+    list.innerHTML =
+        wordSearchWords
+        .map(word => `
+            <div
+                class="word-item
+                ${wordSearchFound.has(word) ? "found" : ""}">
+                ${word}
+            </div>
+        `)
+        .join("");
+}
+
+
+/* UPDATE STATUS */
+function updateWordSearchStatus(){
+
+    const el =
+        document.getElementById("wordSearchFound");
+
+    if(el){
+
+        el.textContent =
+            wordSearchFound.size +
+            " / " +
+            WORDSEARCH_COUNT;
     }
 }
 
@@ -7907,71 +8730,517 @@ function nextMitigationCase(){
 }
 
 /* =========================================================
-   M6 - TANTANGAN CEPAT
+   M6 - TANGKAP KATA 30 DETIK
 ========================================================= */
 
-const quickCases=[
-    {prompt:'Lereng curam + hujan tinggi paling berkaitan dengan...',options:['🌊 Tsunami','⛰️ Tanah Longsor'],answer:1,explain:'Lereng curam dan hujan tinggi dapat meningkatkan ketidakstabilan lereng.'},
-    {prompt:'Aktivitas magma meningkat pada gunung api aktif. Potensi yang paling relevan adalah...',options:['🌋 Erupsi','☀️ Kekeringan'],answer:0,explain:'Aktivitas magma dan tekanan di dalam gunung api berkaitan dengan potensi erupsi.'},
-    {prompt:'Curah hujan sangat rendah dalam waktu lama paling berkaitan dengan...',options:['🌧️ Banjir','☀️ Kekeringan'],answer:1,explain:'Kekeringan berkaitan dengan berkurangnya ketersediaan air dalam periode tertentu.'},
-    {prompt:'Wilayah pesisir setelah gempa kuat perlu mewaspadai...',options:['🌊 Tsunami','🌋 Erupsi'],answer:0,explain:'Sebagian gempa bawah laut dapat memicu tsunami sehingga wilayah pesisir perlu siap melakukan evakuasi.'},
-    {prompt:'Dataran rendah + sungai + hujan tinggi paling berkaitan dengan...',options:['🌧️ Banjir','🌍 Gempa'],answer:0,explain:'Kombinasi tersebut merupakan informasi penting dalam analisis potensi banjir.'},
-    {prompt:'Memilih hanya data yang relevan dalam pemecahan masalah disebut...',options:['🧠 Abstraksi','🎨 Dekorasi'],answer:0,explain:'Abstraksi berarti memusatkan perhatian pada informasi penting dan mengabaikan detail yang tidak relevan.'}
+const catchMaterialWords = [
+    "GEMPA",
+    "TSUNAMI",
+    "ERUPSI",
+    "BANJIR",
+    "LONGSOR",
+    "KEKERINGAN",
+    "MAGMA",
+    "SESAR",
+    "MITIGASI",
+    "EVAKUASI",
+    "DRAINASE",
+    "PESISIR",
+    "VEGETASI",
+    "TEKTONIK",
+    "VULKANIK",
+    "MANGROVE",
+    "ELEVASI",
+    "TOPOGRAFI",
+    "LIKUIFAKSI",
+    "LEMPENG",
+    "AWAN PANAS",
+    "RISIKO",
+    "RESAPAN"
 ];
 
-let quickIndex=0;
-let quickAnsweredCurrent=false;
+const catchDecoyWords = [
+    "TELEVISI",
+    "SEPATU",
+    "KOMPUTER",
+    "BOLA",
+    "PENSIL",
+    "KAMERA",
+    "SEPEDA",
+    "LEMARI",
+    "BONEKA",
+    "JAKET",
+    "MEJA",
+    "GITAR",
+    "PAYUNG",
+    "BUKU TULIS",
+    "KURSI"
+];
 
-function renderQuickQuestion(){
-    const q=quickCases[quickIndex];
-    const count=document.getElementById('quickCount');
-    const prompt=document.getElementById('quickPrompt');
-    const options=document.getElementById('quickOptions');
-    if(!q || !count || !prompt || !options) return;
-    quickAnsweredCurrent=false;
-    count.textContent='SOAL '+(quickIndex+1)+' / '+quickCases.length;
-    prompt.textContent=q.prompt;
-    options.innerHTML='';
-    q.options.forEach((label,i)=>{
-        const btn=document.createElement('button');
-        btn.className='quick-option';
-        btn.textContent=label;
-        btn.onclick=()=>answerQuickQuestion(i,btn);
-        options.appendChild(btn);
-    });
-    document.getElementById('quickNextBtn').style.display='none';
-    setGameFeedback('quickFeedback','info','Pilih satu jawaban.');
+
+let catchRunning = false;
+
+let catchTime = 30;
+
+let catchScore = 0;
+
+let catchCorrect = 0;
+
+let catchWrong = 0;
+
+let catchCombo = 0;
+
+let catchBestCombo = 0;
+
+let catchTimerInterval = null;
+
+let catchSpawnInterval = null;
+
+
+/* MULAI */
+function startCatchGame(){
+
+    stopCatchTimers();
+
+    catchRunning = true;
+
+    catchTime = 30;
+    catchScore = 0;
+    catchCorrect = 0;
+    catchWrong = 0;
+    catchCombo = 0;
+    catchBestCombo = 0;
+
+
+    const arena =
+        document.getElementById("catchArena");
+
+    if(!arena) return;
+
+
+    arena.innerHTML = "";
+
+    updateCatchHUD();
+
+
+    spawnCatchWord();
+
+    catchSpawnInterval =
+        setInterval(
+            spawnCatchWord,
+            650
+        );
+
+
+    catchTimerInterval =
+        setInterval(() => {
+
+            catchTime--;
+
+            updateCatchHUD();
+
+            if(catchTime <= 0){
+
+                finishCatchGame();
+            }
+
+        },1000);
 }
 
-function answerQuickQuestion(optionIndex,button){
-    if(quickAnsweredCurrent) return;
-    quickAnsweredCurrent=true;
-    const q=quickCases[quickIndex];
-    const buttons=[...document.querySelectorAll('#quickOptions .quick-option')];
-    buttons.forEach(b=>b.disabled=true);
-    buttons[q.answer].classList.add('correct');
-    playStats.quickAnswered=Math.max(playStats.quickAnswered,quickIndex+1);
-    if(optionIndex===q.answer){
-        button.classList.add('correct');
-        playStats.quickCorrect++;
-        setGameFeedback('quickFeedback','ok','Tepat! '+q.explain);
+
+/* MUNCULKAN KATA */
+function spawnCatchWord(){
+
+    if(!catchRunning) return;
+
+
+    const arena =
+        document.getElementById("catchArena");
+
+    if(!arena) return;
+
+
+    const isCorrect =
+        Math.random() < 0.68;
+
+
+    const source =
+        isCorrect
+        ? catchMaterialWords
+        : catchDecoyWords;
+
+
+    const word =
+        source[
+            Math.floor(Math.random()*source.length)
+        ];
+
+
+    const button =
+        document.createElement("button");
+
+    button.className = "catch-word";
+
+    button.textContent = word;
+
+    button.dataset.correct =
+        String(isCorrect);
+
+
+    const maxLeft = 82;
+    const maxTop = 78;
+
+    button.style.left =
+        (4 + Math.random()*maxLeft) + "%";
+
+    button.style.top =
+        (5 + Math.random()*maxTop) + "%";
+
+
+    button.onclick =
+        event =>
+            hitCatchWord(
+                button,
+                isCorrect,
+                event
+            );
+
+
+    arena.appendChild(button);
+
+
+    const lifetime =
+        900 +
+        Math.random()*600;
+
+
+    setTimeout(() => {
+
+        if(button.parentElement){
+
+            button.remove();
+        }
+
+    },lifetime);
+}
+
+
+/* KLIK KATA */
+function hitCatchWord(
+    button,
+    isCorrect,
+    event
+){
+
+    if(!catchRunning) return;
+
+
+    if(isCorrect){
+
+        catchCorrect++;
+
+        catchCombo++;
+
+        catchBestCombo =
+            Math.max(
+                catchBestCombo,
+                catchCombo
+            );
+
+
+        let points = 10;
+
+
+        if(catchCombo >= 10){
+
+            points = 20;
+
+        }else if(catchCombo >= 5){
+
+            points = 15;
+        }
+
+
+        catchScore += points;
+
+
+        button.classList.add("good-hit");
+
+
+        showCatchFloat(
+            "+"+points,
+            event,
+            true
+        );
+
     }else{
-        button.classList.add('wrong');
-        setGameFeedback('quickFeedback','bad','Belum tepat. '+q.explain);
+
+        catchWrong++;
+
+        catchCombo = 0;
+
+        catchScore =
+            Math.max(
+                0,
+                catchScore - 5
+            );
+
+
+        button.classList.add("bad-hit");
+
+
+        showCatchFloat(
+            "-5",
+            event,
+            false
+        );
     }
-    const next=document.getElementById('quickNextBtn');
-    next.style.display='inline-block';
-    next.textContent=quickIndex===quickCases.length-1?'Lihat Hasil →':'Soal Berikutnya →';
+
+
+    button.disabled = true;
+
+
+    setTimeout(
+        () => button.remove(),
+        130
+    );
+
+
+    updateCatchHUD();
+}
+
+
+/* ANGKA MELAYANG */
+function showCatchFloat(
+    text,
+    event,
+    good
+){
+
+    const arena =
+        document.getElementById("catchArena");
+
+    if(!arena) return;
+
+
+    const rect =
+        arena.getBoundingClientRect();
+
+
+    const label =
+        document.createElement("div");
+
+    label.className =
+        "catch-float-score";
+
+    label.textContent = text;
+
+    label.style.color =
+        good ? "#15945c" : "#cf4038";
+
+
+    label.style.left =
+        (event.clientX - rect.left) + "px";
+
+    label.style.top =
+        (event.clientY - rect.top) + "px";
+
+
+    arena.appendChild(label);
+
+
+    setTimeout(
+        () => label.remove(),
+        750
+    );
+}
+
+
+/* UPDATE HUD */
+function updateCatchHUD(){
+
+    const timer =
+        document.getElementById("catchTimer");
+
+    const score =
+        document.getElementById("catchScore");
+
+    const correct =
+        document.getElementById("catchCorrect");
+
+    const wrong =
+        document.getElementById("catchWrong");
+
+    const combo =
+        document.getElementById("catchCombo");
+
+
+    if(timer) timer.textContent = catchTime;
+
+    if(score) score.textContent = catchScore;
+
+    if(correct) correct.textContent = catchCorrect;
+
+    if(wrong) wrong.textContent = catchWrong;
+
+    if(combo) combo.textContent = catchCombo;
+}
+
+
+/* SELESAI */
+function finishCatchGame(){
+
+    catchRunning = false;
+
+    stopCatchTimers();
+
+
+    const arena =
+        document.getElementById("catchArena");
+
+    if(!arena) return;
+
+
+    const totalClicks =
+        catchCorrect + catchWrong;
+
+
+    const accuracy =
+        totalClicks
+        ? Math.round(
+            catchCorrect /
+            totalClicks *
+            100
+        )
+        : 0;
+
+
+    playStats.quickCorrect =
+        catchCorrect;
+
+    playStats.quickAnswered =
+        totalClicks;
+
+    playStats.quickTotal =
+        Math.max(
+            1,
+            totalClicks
+        );
+
+
+    arena.innerHTML = `
+        <div class="catch-result">
+
+            <div style="font-size:48px">
+                🏆
+            </div>
+
+            <h3>Waktu Habis!</h3>
+
+            <div class="catch-result-score">
+                ${catchScore} poin
+            </div>
+
+            <p>
+                ✅ Benar: ${catchCorrect}
+                &nbsp; • &nbsp;
+                ❌ Salah: ${catchWrong}
+                &nbsp; • &nbsp;
+                🎯 Akurasi: ${accuracy}%
+                &nbsp; • &nbsp;
+                🔥 Combo terbaik: x${catchBestCombo}
+            </p>
+
+            <button
+                class="game-small-btn"
+                onclick="startCatchGame()">
+                ↻ Main Lagi
+            </button>
+
+        </div>
+    `;
+
+
     updatePlayMenuBadges();
 }
 
-function nextQuickQuestion(){
-    if(quickIndex<quickCases.length-1){
-        quickIndex++;
-        renderQuickQuestion();
-    }else{
-        showScreen('bermainM7');
+
+/* STOP TIMER */
+function stopCatchTimers(){
+
+    if(catchTimerInterval){
+
+        clearInterval(
+            catchTimerInterval
+        );
+
+        catchTimerInterval = null;
     }
+
+
+    if(catchSpawnInterval){
+
+        clearInterval(
+            catchSpawnInterval
+        );
+
+        catchSpawnInterval = null;
+    }
+}
+
+
+/* RESET LAYAR */
+function resetCatchGame(){
+
+    stopCatchTimers();
+
+    catchRunning = false;
+
+    catchTime = 30;
+    catchScore = 0;
+    catchCorrect = 0;
+    catchWrong = 0;
+    catchCombo = 0;
+    catchBestCombo = 0;
+
+
+    const arena =
+        document.getElementById("catchArena");
+
+
+    if(arena){
+
+        arena.innerHTML = `
+            <div
+                class="catch-start-panel"
+                id="catchStartPanel">
+
+                <div class="catch-start-icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    Siap Menguji Kecepatanmu?
+                </h3>
+
+                <p>
+                    Kata akan muncul dengan cepat.
+                    Tekan hanya istilah yang berkaitan
+                    dengan materi potensi bencana alam.
+                </p>
+
+                <button
+                    class="game-small-btn"
+                    onclick="startCatchGame()">
+                    ▶ Mulai 30 Detik
+                </button>
+
+            </div>
+        `;
+    }
+
+
+    updateCatchHUD();
 }
 
 /* =========================================================
@@ -8021,9 +9290,7 @@ function resetAllPlayGames(){
     });
 
     resetMatchGame();
-    regionIndex=0;
-    regionCaseAnswered=false;
-    renderRegionCase();
+    startWordSearch();
 
     detectiveIndex=0;
     detectiveHadWrong=false;
@@ -8036,9 +9303,7 @@ function resetAllPlayGames(){
     mitigationCompletedCurrent=false;
     renderMitigationCase(true);
 
-    quickIndex=0;
-    quickAnsweredCurrent=false;
-    renderQuickQuestion();
+    resetCatchGame();
     updatePlayMenuBadges();
 }
 
@@ -8047,10 +9312,15 @@ function resetAllPlayGames(){
 ========================================================= */
 
 function initPlayGames(){
-    renderRegionCase();
+
+    startWordSearch();
+
     renderDetectiveCase();
+
     renderMitigationCase(true);
-    renderQuickQuestion();
+
+    resetCatchGame();
+
     updatePlayMenuBadges();
 }
 
