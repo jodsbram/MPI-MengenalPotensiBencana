@@ -2717,6 +2717,11 @@ position:absolute;
         transform .1s ease,
         background .1s ease,
         color .1s ease;
+
+        touch-action:none;
+user-select:none;
+-webkit-user-select:none;
+-webkit-touch-callout:none;
 }
 
 .word-cell:hover{
@@ -4682,15 +4687,36 @@ position:absolute;
     #app { position: relative !important; left: auto !important; top: auto !important; transform: none !important; width: 100% !important; min-height: 100vh !important; height: auto !important; aspect-ratio: auto !important; overflow-y: visible !important; box-shadow: none !important; }
     .screen { position: relative !important; min-height: 100vh !important; height: auto !important; overflow: visible !important; }
     
-    /* Cover & Menu Terkunci */
-    #coverScreen, #activityScreen { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; min-height: 100% !important; overflow: hidden !important; }
-    
-    /* Screen Materi Bisa di-Scroll */
-    #belajarB1, #belajarB2, #belajarB3, #belajarB4, #belajarB5, #belajarB6, #belajarB7, #belajarB8, #belajarB9, #belajarB10, #belajarB11, #belajarB12, #belajarB13, #belajarB14, #refleksiScreen, #finalSummaryScreen {
-        position: relative !important; min-height: 100vh !important; height: auto !important; overflow-y: auto !important;
-    }
-    .learn-shell, .game-shell, .practice-shell, .sim-shell, .sim-lab-shell, .glossary-shell, .reflection-shell, .final-summary-shell {
-        min-height: 100vh !important; height: auto !important; padding: 60px 4% 110px 4% !important; box-sizing: border-box !important;
+    /* COVER BISA DISCROLL DI HP */
+#coverScreen{
+    position:relative !important;
+    inset:auto !important;
+
+    width:100% !important;
+
+    min-height:720px !important;
+    height:720px !important;
+
+    overflow-y:auto !important;
+    overflow-x:hidden !important;
+
+    -webkit-overflow-scrolling:touch;
+
+    box-sizing:border-box !important;
+}
+
+
+/* PILIH AKTIVITAS TETAP TERKUNCI */
+#activityScreen{
+    position:absolute !important;
+    inset:0 !important;
+
+    width:100% !important;
+
+    height:100% !important;
+    min-height:100% !important;
+
+    overflow:hidden !important;
     }
 
     /* Bar Navigasi Turun ke Bawah Halaman */
@@ -8241,10 +8267,9 @@ function renderWordSearch(){
             cell.dataset.col = c;
 
             cell.onpointerdown = (e) => startWordDrag(r,c,e);
-cell.onpointerenter = (e) => moveWordDrag(r,c,e);
-cell.onpointerup = (e) => endWordDrag(r,c,e);
 
             board.appendChild(cell);
+            
         }
     }
 
@@ -8263,6 +8288,10 @@ cell.onpointerup = (e) => endWordDrag(r,c,e);
 
 
     updateWordSearchStatus();
+
+    board.onpointermove = handleWordSearchPointerMove;
+board.onpointerup = handleWordSearchPointerUp;
+board.onpointercancel = cancelWordDrag;
 }
 
 
@@ -8272,35 +8301,108 @@ let wordSearchStart = null;
 let wordSearchCurrentCells = [];
 
 function startWordDrag(row,col,event){
+
     event.preventDefault();
 
     wordSearchDragging = true;
-    wordSearchStart = {row,col};
+
+    wordSearchStart = {
+        row,
+        col
+    };
+
+    wordSearchCurrentCells = [];
 
     clearWordSearchSelection();
 
     updateWordDragSelection(row,col);
+
+    const board = document.getElementById("wordSearchBoard");
+
+    if(board && board.setPointerCapture){
+        try{
+            board.setPointerCapture(event.pointerId);
+        }catch(err){}
+    }
 }
 
-function moveWordDrag(row,col,event){
+
+function handleWordSearchPointerMove(event){
+
     if(!wordSearchDragging) return;
 
     event.preventDefault();
+
+    const element = document.elementFromPoint(
+        event.clientX,
+        event.clientY
+    );
+
+    if(!element) return;
+
+    const cell = element.closest(".word-cell");
+
+    if(!cell) return;
+
+    const row = Number(cell.dataset.row);
+    const col = Number(cell.dataset.col);
 
     updateWordDragSelection(row,col);
 }
 
-function endWordDrag(row,col,event){
+
+function handleWordSearchPointerUp(event){
+
     if(!wordSearchDragging) return;
 
     event.preventDefault();
 
+    const element = document.elementFromPoint(
+        event.clientX,
+        event.clientY
+    );
+
+    let cell = null;
+
+    if(element){
+        cell = element.closest(".word-cell");
+    }
+
+    if(cell){
+
+        const row = Number(cell.dataset.row);
+        const col = Number(cell.dataset.col);
+
+        checkDraggedWord(row,col);
+
+    }else{
+
+        clearWordSearchSelection();
+    }
+
     wordSearchDragging = false;
-
-    checkDraggedWord(row,col);
-
     wordSearchStart = null;
     wordSearchCurrentCells = [];
+
+    const board = document.getElementById("wordSearchBoard");
+
+    if(board && board.releasePointerCapture){
+        try{
+            board.releasePointerCapture(event.pointerId);
+        }catch(err){}
+    }
+}
+
+
+function cancelWordDrag(){
+
+    wordSearchDragging = false;
+
+    wordSearchStart = null;
+
+    wordSearchCurrentCells = [];
+
+    clearWordSearchSelection();
 }
 
 function updateWordDragSelection(endRow,endCol){
