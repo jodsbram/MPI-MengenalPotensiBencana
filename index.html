@@ -3372,12 +3372,153 @@ user-select:none;
     border:1px solid #cfe1e6;
 }
 
+.practice-result-btn.certificate{
+    background:linear-gradient(135deg,#FFD84D,#F4B81E);
+    color:#563f00;
+    box-shadow:0 8px 20px rgba(214,160,0,.24);
+}
+
+.practice-result-actions{
+    flex-wrap:wrap;
+}
+
+.certificate-modal{
+    position:fixed;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(8,29,44,.48);
+    z-index:9999;
+}
+
+.certificate-modal.show{
+    display:flex;
+}
+
+.certificate-modal-card{
+    position:relative;
+    width:min(680px,96vw);
+    max-height:min(90vh,760px);
+    overflow:auto;
+    background:linear-gradient(180deg,#ffffff,#f4fbfd);
+    border-radius:26px;
+    padding:28px 26px 24px;
+    box-shadow:0 20px 50px rgba(0,44,68,.24);
+}
+
+.certificate-modal-close{
+    position:absolute;
+    top:12px;
+    right:12px;
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:50%;
+    background:#e8f3f7;
+    color:#1a5167;
+    font-size:24px;
+    font-weight:900;
+}
+
+.certificate-modal-kicker{
+    color:#0e77aa;
+    font-size:12px;
+    font-weight:950;
+    letter-spacing:.14em;
+}
+
+.certificate-modal-head h3{
+    margin:4px 0 8px;
+    color:#103f6f;
+    font-size:clamp(24px,2vw,34px);
+}
+
+.certificate-modal-head p{
+    margin:0 0 18px;
+    color:#496a78;
+    font-size:14px;
+    line-height:1.5;
+}
+
+.certificate-form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.certificate-field{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.certificate-field.full{
+    grid-column:1 / -1;
+}
+
+.certificate-field span{
+    color:#19495d;
+    font-size:13px;
+    font-weight:900;
+}
+
+.certificate-field input{
+    width:100%;
+    min-height:48px;
+    padding:0 14px;
+    border:1px solid #cfe1e6;
+    border-radius:13px;
+    background:#fff;
+    color:#163d51;
+    font-size:15px;
+    font-weight:700;
+    outline:none;
+}
+
+.certificate-field input:focus{
+    border-color:#168fb5;
+    box-shadow:0 0 0 4px rgba(22,143,181,.12);
+}
+
+.certificate-modal-actions{
+    margin-top:18px;
+    display:flex;
+    justify-content:flex-end;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.certificate-action-btn{
+    min-height:48px;
+    padding:0 18px;
+    border:none;
+    border-radius:14px;
+    font-size:14px;
+    font-weight:900;
+}
+
+.certificate-action-btn.primary{
+    background:#168fb5;
+    color:#fff;
+}
+
+.certificate-action-btn.secondary{
+    background:#fff;
+    color:#19495d;
+    border:1px solid #cfe1e6;
+}
+
 @media(max-width:900px){
     .practice-card{width:88%;padding:16px 18px;}
     .practice-options{gap:8px;}
     .practice-option{min-height:58px;padding:8px 11px;grid-template-columns:34px 1fr;}
     .practice-letter{width:32px;height:32px;}
     .practice-feedback{margin-top:8px;padding:8px 11px;}
+    .certificate-form-grid{grid-template-columns:1fr;}
+    .certificate-field.full{grid-column:auto;}
+    .certificate-modal-card{padding:22px 18px 20px;}
 }
 
 
@@ -5076,6 +5217,301 @@ height:auto !important;
     }
 }
 
+
+/* =========================================================
+   SCREEN APERSEPSI VIDEO
+   Background sama dengan Pilih Aktivitas
+========================================================= */
+.apersepsi-screen{
+    background-image:url('assets/bg/pilih-aktivitas.png');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+/* =========================================================
+   HOME SCREEN APERSEPSI
+========================================================= */
+
+.apersepsi-home{
+    position:absolute;
+    z-index:20;
+
+    top:3.5%;
+    left:2.5%;
+
+    width:clamp(50px,4.5vw,72px);
+    height:clamp(50px,4.5vw,72px);
+
+    border:none;
+    border-radius:50%;
+
+    background:#FFD84D;
+    color:#5b4700;
+
+    display:grid;
+    place-items:center;
+
+    font-size:clamp(21px,2vw,31px);
+
+    box-shadow:
+        0 9px 24px
+        rgba(0,0,0,.20);
+
+    transition:
+        transform .16s ease,
+        box-shadow .16s ease;
+}
+
+.apersepsi-home:hover{
+    transform:scale(1.07);
+
+    box-shadow:
+        0 13px 28px
+        rgba(0,0,0,.25);
+}
+
+.apersepsi-home:active{
+    transform:scale(.95);
+}
+
+.apersepsi-shell{
+    position:relative;
+    z-index:2;
+    width:100%;
+    height:100%;
+    padding:2.4% 5% 2.6%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    overflow:hidden;
+}
+
+.apersepsi-heading{
+    width:min(980px,84%);
+    flex:0 0 auto;
+    text-align:center;
+    margin:0 auto clamp(10px,1vw,16px);
+    padding:clamp(12px,1.15vw,18px) clamp(20px,2vw,34px);
+    background:rgba(255,255,255,.94);
+    border-radius:clamp(18px,1.7vw,28px);
+    box-shadow:0 12px 30px rgba(18,82,123,.13);
+}
+
+.apersepsi-kicker{
+    color:#0e6fa8;
+    font-size:clamp(10px,.75vw,14px);
+    font-weight:950;
+    letter-spacing:.14em;
+}
+
+.apersepsi-heading h2{
+    margin:.18em 0 .16em;
+    color:#114da3;
+    font-size:clamp(27px,2.45vw,43px);
+    line-height:1.05;
+    font-weight:950;
+}
+
+.apersepsi-heading p{
+    margin:0 auto;
+    max-width:820px;
+    color:#2d4860;
+    font-size:clamp(12px,.94vw,17px);
+    line-height:1.42;
+    font-weight:750;
+}
+
+.apersepsi-video-card{
+    position:relative;
+    flex:1 1 auto;
+    min-height:0;
+    width:min(1040px,82%);
+    aspect-ratio:16 / 9;
+    margin:0 auto;
+    border-radius:clamp(18px,1.7vw,26px);
+    overflow:hidden;
+    background:#071722;
+    border:4px solid rgba(255,255,255,.96);
+    box-shadow:0 18px 45px rgba(0,55,90,.25);
+}
+
+.apersepsi-video{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    background:#000;
+    display:block;
+}
+
+/* Thumbnail / poster buatan CSS, jadi tidak perlu aset gambar tambahan */
+.apersepsi-thumbnail{
+    position:absolute;
+    inset:0;
+    z-index:5;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:clamp(8px,1vw,14px);
+    padding:24px;
+    text-align:center;
+    cursor:pointer;
+    background-image:
+        linear-gradient(180deg,rgba(5,32,52,.12),rgba(4,27,46,.58)),
+        url('assets/video/thumbnail-apersepsi.png');
+    background-size:cover;
+    background-position:center;
+    transition:opacity .25s ease,visibility .25s ease;
+}
+
+.apersepsi-thumbnail.hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+.apersepsi-play-button{
+    width:clamp(74px,7vw,112px);
+    height:clamp(74px,7vw,112px);
+    border:none;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    padding-left:.12em;
+    background:linear-gradient(135deg,#ffe14d,#ffab18);
+    color:#173344;
+    font-size:clamp(31px,3vw,49px);
+    font-weight:950;
+    border:5px solid rgba(255,255,255,.96);
+    box-shadow:0 14px 34px rgba(0,0,0,.28);
+    animation:apersepsiPlayPulse 2s ease-in-out infinite;
+}
+
+.apersepsi-thumbnail-title{
+    color:#fff;
+    font-size:clamp(18px,1.7vw,29px);
+    line-height:1.1;
+    font-weight:950;
+    text-shadow:0 3px 12px rgba(0,0,0,.55);
+}
+
+.apersepsi-thumbnail-subtitle{
+    color:#f5fbff;
+    font-size:clamp(11px,.9vw,16px);
+    line-height:1.35;
+    font-weight:800;
+    text-shadow:0 2px 8px rgba(0,0,0,.5);
+}
+
+@keyframes apersepsiPlayPulse{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.08);}
+}
+
+.apersepsi-actions{
+    flex:0 0 auto;
+    width:min(1040px,82%);
+    margin:clamp(9px,1vw,15px) auto 0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+}
+
+.apersepsi-btn{
+    min-height:clamp(42px,3.7vw,54px);
+    padding:0 clamp(16px,1.5vw,25px);
+    border:none;
+    border-radius:14px;
+    font-size:clamp(12px,.92vw,16px);
+    font-weight:950;
+    box-shadow:0 8px 20px rgba(0,60,90,.13);
+    transition:transform .15s ease,filter .15s ease;
+}
+
+.apersepsi-btn:hover{transform:translateY(-2px);filter:brightness(1.04);}
+.apersepsi-btn:active{transform:scale(.97);}
+.apersepsi-btn.secondary{background:#fff;color:#17445a;}
+.apersepsi-btn.primary{background:#168fb5;color:#fff;}
+
+/* Mobile / HP landscape */
+@media screen and (max-height:580px), screen and (max-width:850px){
+    #apersepsiScreen{
+        position:relative !important;
+        width:100% !important;
+        min-height:100vh !important;
+        height:auto !important;
+        overflow-y:auto !important;
+        overflow-x:hidden !important;
+        .apersepsi-home{
+    position:fixed !important;
+
+    top:10px !important;
+    left:10px !important;
+
+    width:42px !important;
+    height:42px !important;
+
+    font-size:19px !important;
+
+    border:3px solid rgba(255,255,255,.95);
+}
+    }
+
+    .apersepsi-shell{
+        min-height:100vh !important;
+        height:auto !important;
+        padding:14px 3.5% 20px !important;
+        overflow:visible !important;
+    }
+
+    .apersepsi-heading{
+        width:94% !important;
+        margin-bottom:9px !important;
+        padding:10px 14px !important;
+        border-radius:16px !important;
+    }
+
+    .apersepsi-kicker{font-size:9px !important;}
+    .apersepsi-heading h2{font-size:clamp(21px,4.5vw,30px) !important;}
+    .apersepsi-heading p{font-size:11px !important;line-height:1.35 !important;}
+
+    .apersepsi-video-card{
+        flex:none !important;
+        width:94% !important;
+        height:auto !important;
+        aspect-ratio:16 / 9 !important;
+        border-width:3px !important;
+        border-radius:16px !important;
+    }
+
+    .apersepsi-play-button{
+        width:64px !important;
+        height:64px !important;
+        font-size:29px !important;
+        border-width:4px !important;
+    }
+
+    .apersepsi-thumbnail-title{font-size:18px !important;}
+    .apersepsi-thumbnail-subtitle{font-size:10px !important;}
+
+    .apersepsi-actions{
+        width:94% !important;
+        margin-top:10px !important;
+        padding-bottom:4px !important;
+    }
+
+    .apersepsi-btn{
+        min-height:40px !important;
+        padding:0 14px !important;
+        font-size:11px !important;
+    }
+}
+
 </style>
 
 </head>
@@ -5143,7 +5579,7 @@ alt="Logo 1">
 
 <button
 class="start-button"
-onclick="showScreen('activityScreen')">
+onclick="openApersepsi()">
 
 🚀 Mulai Belajar
 
@@ -5189,6 +5625,87 @@ onclick="openModal('referenceModal')">
 
 </div>
 
+
+</section>
+
+
+<!-- =========================================================
+     SCREEN APERSEPSI
+========================================================= -->
+<section class="screen apersepsi-screen" id="apersepsiScreen">
+
+    <div class="apersepsi-overlay"></div>
+
+    <!-- HOME APERSEPSI -->
+    <button
+        class="apersepsi-home"
+        aria-label="Kembali ke halaman utama"
+        onclick="showScreen('coverScreen')">
+        🏠
+    </button>
+
+    <div class="apersepsi-shell">
+
+        <div class="apersepsi-heading">
+            <div class="apersepsi-kicker">PENGANTAR PEMBELAJARAN</div>
+            <h2>Sebelum Kita Mulai...</h2>
+            <p>
+                Amati tayangan berikut. Perhatikan keragaman kondisi geografis Indonesia
+                dan pikirkan mengapa setiap wilayah dapat memiliki potensi bencana yang berbeda.
+            </p>
+        </div>
+
+        <div class="apersepsi-video-card">
+
+            <video
+                id="apersepsiVideo"
+                class="apersepsi-video"
+                src="assets/video/apersepsi.mp4"
+                playsinline
+                preload="metadata"
+                controls
+                onplay="hideApersepsiThumbnail()"
+                onended="showApersepsiThumbnail(true)">
+            </video>
+
+            <div
+                class="apersepsi-thumbnail"
+                id="apersepsiThumbnail"
+                onclick="playApersepsiVideo()"
+                role="button"
+                tabindex="0"
+                aria-label="Putar video pengantar">
+
+                <button
+                    class="apersepsi-play-button"
+                    type="button"
+                    aria-label="Putar video pengantar">
+                    ▶
+                </button>
+
+                <div class="apersepsi-thumbnail-title">
+                    Video Pengantar
+                </div>
+
+                <div class="apersepsi-thumbnail-subtitle">
+                    Tekan tombol Play untuk memulai tayangan
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="apersepsi-actions">
+            <button class="apersepsi-btn secondary" onclick="replayApersepsi()">
+                ↻ Putar Ulang
+            </button>
+
+            <button class="apersepsi-btn primary" onclick="finishApersepsi()">
+                Lanjut ke Pilih Aktivitas →
+            </button>
+        </div>
+
+    </div>
 
 </section>
 
@@ -6582,12 +7099,54 @@ id="glossaryScreen">
 
             <div class="practice-result-actions">
                 <button class="practice-result-btn secondary" onclick="startPractice()">↻ Ulangi Latihan</button>
+                <button class="practice-result-btn certificate" onclick="openCertificateForm()">🏆 Cetak Sertifikat</button>
                 <button class="practice-result-btn" onclick="showScreen('activityScreen')">🏠 Pilih Aktivitas</button>
             </div>
         </div>
     </div>
 </section>
 
+<!-- =========================================================
+     POPUP SERTIFIKAT LATIHAN
+========================================================= -->
+<div class="certificate-modal" id="certificateModal">
+    <div class="certificate-modal-card">
+        <button class="certificate-modal-close" aria-label="Tutup" onclick="closeCertificateForm()">×</button>
+
+        <div class="certificate-modal-head">
+            <div class="certificate-modal-kicker">SERTIFIKAT LATIHAN</div>
+            <h3>Lengkapi Data Sertifikat</h3>
+            <p>Isi data berikut, lalu klik <b>Buat & Cetak Sertifikat</b>.</p>
+        </div>
+
+        <div class="certificate-form-grid">
+            <label class="certificate-field">
+                <span>Nama</span>
+                <input type="text" id="certificateName" placeholder="Masukkan nama lengkap">
+            </label>
+
+            <label class="certificate-field">
+                <span>Kelas</span>
+                <input type="text" id="certificateClass" placeholder="Contoh: VIII-3">
+            </label>
+
+            <label class="certificate-field full">
+                <span>Asal Sekolah</span>
+                <input type="text" id="certificateSchool" placeholder="Contoh: SMP Negeri 9 Tangerang Selatan">
+            </label>
+
+            <label class="certificate-field full">
+                <span>Tanggal</span>
+                <input type="text" id="certificateDate" placeholder="23 September 2026">
+            </label>
+        </div>
+
+        <div class="certificate-modal-actions">
+            <button class="certificate-action-btn secondary" onclick="closeCertificateForm()">Batal</button>
+            <button class="certificate-action-btn primary" onclick="printPracticeCertificate()">🖨️ Buat & Cetak Sertifikat</button>
+        </div>
+    </div>
+</div>
 
 
 <!-- =========================================================
@@ -7525,6 +8084,11 @@ function showScreen(id){
         reflectionPopup.classList.remove("show");
     }
 
+    const certificateModal = document.getElementById('certificateModal');
+    if(certificateModal){
+        certificateModal.classList.remove('show');
+    }
+
     if(id === "bermainM1"){
         updatePlayMenuBadges();
     }
@@ -7546,8 +8110,91 @@ function showScreen(id){
     }
 
     if(id === "bermainM3"){
-    startWordSearch();
+        startWordSearch();
+    }
+
+    /* Hentikan video apersepsi ketika berpindah ke screen lain */
+    if(id !== "apersepsiScreen"){
+        const apersepsiVideo = document.getElementById("apersepsiVideo");
+        if(apersepsiVideo){
+            apersepsiVideo.pause();
+        }
+    }
 }
+
+
+/* =========================================================
+   VIDEO APERSEPSI
+========================================================= */
+function openApersepsi(){
+    showScreen("apersepsiScreen");
+
+    const video = document.getElementById("apersepsiVideo");
+    if(video){
+        video.pause();
+        video.currentTime = 0;
+    }
+
+    showApersepsiThumbnail(false);
+}
+
+function playApersepsiVideo(){
+    const video = document.getElementById("apersepsiVideo");
+    if(!video) return;
+
+    hideApersepsiThumbnail();
+
+    const promise = video.play();
+    if(promise && typeof promise.catch === "function"){
+        promise.catch(() => {
+            showApersepsiThumbnail(false);
+        });
+    }
+}
+
+function hideApersepsiThumbnail(){
+    const thumb = document.getElementById("apersepsiThumbnail");
+    if(thumb){
+        thumb.classList.add("hidden");
+    }
+}
+
+function showApersepsiThumbnail(ended = false){
+    const thumb = document.getElementById("apersepsiThumbnail");
+    if(!thumb) return;
+
+    thumb.classList.remove("hidden");
+
+    const title = thumb.querySelector(".apersepsi-thumbnail-title");
+    const subtitle = thumb.querySelector(".apersepsi-thumbnail-subtitle");
+    const play = thumb.querySelector(".apersepsi-play-button");
+
+    if(ended){
+        if(title) title.textContent = "Tayangan Selesai";
+        if(subtitle) subtitle.textContent = "Tekan Play untuk menonton kembali";
+        if(play) play.textContent = "↻";
+    }else{
+        if(title) title.textContent = "Video Pengantar";
+        if(subtitle) subtitle.textContent = "Tekan tombol Play untuk memulai tayangan";
+        if(play) play.textContent = "▶";
+    }
+}
+
+function replayApersepsi(){
+    const video = document.getElementById("apersepsiVideo");
+    if(!video) return;
+
+    video.currentTime = 0;
+    playApersepsiVideo();
+}
+
+function finishApersepsi(){
+    const video = document.getElementById("apersepsiVideo");
+    if(video){
+        video.pause();
+    }
+
+    showScreen("activityScreen");
 }
 
 
@@ -9695,6 +10342,167 @@ function renderPracticeResult(){
     }catch(e){}
 }
 
+function getTodayIndonesianDate(){
+    return new Date().toLocaleDateString('id-ID',{
+        day:'numeric',
+        month:'long',
+        year:'numeric'
+    });
+}
+
+function openCertificateForm(){
+    const modal=document.getElementById('certificateModal');
+    const dateInput=document.getElementById('certificateDate');
+
+if(
+    dateInput &&
+    !dateInput.value.trim()
+){
+    dateInput.value=getTodayIndonesianDate();
+}
+
+    if(modal) modal.classList.add('show');
+
+    const nameInput=document.getElementById('certificateName');
+    if(nameInput) setTimeout(()=>nameInput.focus(),50);
+}
+
+function closeCertificateForm(){
+    const modal=document.getElementById('certificateModal');
+    if(modal) modal.classList.remove('show');
+}
+
+function escapeHtml(value){
+    return String(value).replace(/[&<>"']/g,function(char){
+        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[char]);
+    });
+}
+
+function printPracticeCertificate(){
+    const name=(document.getElementById('certificateName')?.value || '').trim();
+    const kelas=(document.getElementById('certificateClass')?.value || '').trim();
+    const school=(document.getElementById('certificateSchool')?.value || '').trim();
+    const score = String(practiceScore * 10);
+    const date=(document.getElementById('certificateDate')?.value || getTodayIndonesianDate()).trim();
+
+    if(!name){
+        alert('Nama harus diisi.');
+        document.getElementById('certificateName')?.focus();
+        return;
+    }
+    if(!kelas){
+        alert('Kelas harus diisi.');
+        document.getElementById('certificateClass')?.focus();
+        return;
+    }
+    if(!school){
+        alert('Asal sekolah harus diisi.');
+        document.getElementById('certificateSchool')?.focus();
+        return;
+    }
+
+    if(!date){
+        alert('Tanggal harus diisi.');
+        document.getElementById('certificateDate')?.focus();
+        return;
+    }
+
+    const templateUrl = new URL('assets/sertifikat/sertifikat.jpg', window.location.href).href;
+    const popup=window.open('','_blank');
+
+    if(!popup){
+        alert('Browser memblokir jendela sertifikat. Izinkan pop-up lalu coba kembali.');
+        return;
+    }
+
+    const safeName=escapeHtml(name);
+    const safeKelas=escapeHtml(kelas);
+    const safeSchool=escapeHtml(school);
+    const safeScore=escapeHtml(score);
+    const safeDate=escapeHtml(date);
+
+    popup.document.write(`<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sertifikat ${safeName}</title>
+<style>
+*{box-sizing:border-box;}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef6f8;color:#123;}
+.page-wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:18px;gap:14px;overflow:auto;}
+.cert-preview{position:relative;width:min(1120px,100%);aspect-ratio:3508 / 2480;background:#fff;box-shadow:0 18px 40px rgba(0,41,63,.18);overflow:hidden;}
+.cert-preview img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.cert-text{position:absolute;left:50%;transform:translateX(-50%);text-align:center;color:#173b63;text-shadow:0 1px 1px rgba(255,255,255,.35);}
+.cert-name{top:28.2%;width:72%;font-size:clamp(26px,3.15vw,56px);font-weight:900;letter-spacing:.03em;}
+.cert-class{
+    top:39.5%;
+    left:50%;
+    width:75%;
+
+    font-size:24px;
+    font-weight:800;
+
+    color:#173b63;
+
+    white-space:nowrap;
+}
+
+
+.cert-school{
+    top:48%;
+    left:50%;
+    width:82%;
+
+    font-size:22px;
+    font-weight:700;
+
+    color:#173b63;
+
+    white-space:nowrap;
+}
+.cert-score{top:55.1%;width:26%;font-size:clamp(22px,2.6vw,46px);font-weight:900;}
+.cert-date{top:61.3%;width:40%;font-size:clamp(13px,1.35vw,24px);font-weight:800;}
+.print-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;}
+.print-bar button{min-height:44px;padding:0 18px;border:none;border-radius:12px;font-size:14px;font-weight:900;cursor:pointer;}
+.print-btn{background:#168fb5;color:#fff;}
+.close-btn{background:#fff;color:#19495d;border:1px solid #cfe1e6;}
+.note{font-size:12px;color:#456879;text-align:center;}
+@page{size:A4 landscape;margin:0;}
+@media print{body{background:#fff;} .print-bar,.note{display:none !important;} .page-wrap{padding:0;gap:0;} .cert-preview{width:297mm;height:210mm;max-width:none;box-shadow:none;}}
+        .cert-text{
+    transform:translateX(-50%) !important;
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+  <div class="cert-preview">
+    <img src="${templateUrl}" alt="Template Sertifikat">
+    <div class="cert-text cert-name">${safeName}</div>
+    <div class="cert-text cert-class">${safeKelas}</div>
+<div class="cert-text cert-school">${safeSchool}</div>
+    <div class="cert-text cert-score">${safeScore}</div>
+    <div class="cert-text cert-date">${safeDate}</div>
+  </div>
+  <div class="print-bar">
+    <button class="print-btn" onclick="window.print()">🖨️ Cetak / Simpan PDF</button>
+    <button class="close-btn" onclick="window.close()">✕ Tutup</button>
+  </div>
+  <div class="note">Jika posisi teks belum pas dengan template, ubah nilai <b>top</b> pada class <b>.cert-name</b>, <b>.cert-classschool</b>, <b>.cert-score</b>, dan <b>.cert-date</b> di fungsi <b>printPracticeCertificate()</b>.</div>
+</div>
+</body>
+</html>`);
+    popup.document.close();
+    closeCertificateForm();
+}
+
+window.addEventListener('click',function(e){
+    const modal=document.getElementById('certificateModal');
+    if(e.target===modal){
+        closeCertificateForm();
+    }
+});
 
 /* =========================================================
    SIMULASI - 3 LAB BENCANA UTAMA (ANIMASI VISUAL)
