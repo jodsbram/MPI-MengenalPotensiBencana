@@ -971,6 +971,7 @@ position:absolute;
 }
 
 
+
 /* =========================================================
    MODAL
 ========================================================= */
@@ -1404,6 +1405,139 @@ position:absolute;
 
 }
 
+
+
+/* =========================================================
+   PANDUAN PENGGUNAAN DI COVER
+========================================================= */
+.guide-button{
+    position:absolute;
+    z-index:7;
+    left:50%;
+    bottom:27%;
+    transform:translateX(-50%);
+    min-width:clamp(245px,23vw,390px);
+    min-height:clamp(46px,4.2vw,64px);
+    padding:0 1.45em;
+    border:2px solid rgba(255,255,255,.92);
+    border-radius:999px;
+    background:rgba(10,71,136,.90);
+    color:#fff;
+    font-size:clamp(14px,1.15vw,20px);
+    font-weight:950;
+    letter-spacing:.02em;
+    box-shadow:0 10px 26px rgba(0,0,0,.22);
+    overflow:hidden;
+    animation:guideBreathing 2.8s ease-in-out infinite;
+    transition:filter .2s ease,box-shadow .2s ease;
+}
+
+.guide-button::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-140%;
+    width:70%;
+    height:100%;
+    background:linear-gradient(120deg,transparent,rgba(255,255,255,.55),transparent);
+    transform:skewX(-24deg);
+    animation:guideShine 3.6s ease-in-out infinite;
+    pointer-events:none;
+}
+
+.guide-button:hover{
+    filter:brightness(1.08);
+    box-shadow:0 14px 32px rgba(0,0,0,.28);
+}
+
+.guide-button:active{
+    transform:translateX(-50%) scale(.97);
+}
+
+@keyframes guideBreathing{
+    0%,100%{transform:translateX(-50%) scale(1);}
+    50%{transform:translateX(-50%) scale(1.035);}
+}
+
+@keyframes guideShine{
+    0%,38%{left:-140%;}
+    72%,100%{left:160%;}
+}
+
+.guide-modal-panel{
+    width:min(1050px,90%);
+}
+
+.guide-intro{
+    margin:-3px 0 15px;
+    color:#294b5e;
+    font-size:clamp(13px,1vw,18px);
+    font-weight:800;
+    line-height:1.45;
+}
+
+.guide-step-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.guide-step{
+    position:relative;
+    min-height:128px;
+    padding:15px 14px 13px;
+    border-radius:19px;
+    background:linear-gradient(145deg,#f5fbff,#e7f5fb);
+    border:1px solid #d1e7f0;
+    box-shadow:0 7px 18px rgba(0,70,105,.08);
+}
+
+.guide-step-number{
+    position:absolute;
+    top:10px;
+    right:10px;
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:#1479d1;
+    color:#fff;
+    font-size:13px;
+    font-weight:950;
+}
+
+.guide-step-icon{
+    font-size:clamp(28px,2.3vw,40px);
+    line-height:1;
+    margin-bottom:8px;
+}
+
+.guide-step h4{
+    margin:0 0 5px;
+    color:#0f5998;
+    font-size:clamp(14px,1.05vw,18px);
+}
+
+.guide-step p{
+    margin:0;
+    color:#173b50;
+    font-size:clamp(11px,.82vw,14px);
+    line-height:1.35;
+    font-weight:750;
+}
+
+.guide-tip{
+    margin-top:13px;
+    padding:10px 13px;
+    border-radius:14px;
+    background:#fff8d8;
+    border:1px solid #e9cf67;
+    color:#3e3513;
+    font-size:clamp(11px,.82vw,14px);
+    line-height:1.4;
+    font-weight:850;
+}
 
 /* =========================================================
    RESPONSIVE
@@ -2495,29 +2629,166 @@ position:absolute;
     gap:10px;
 }
 
-/* M4 DATA DETEKTIF */
-.detective-grid{
-    width:min(1060px,82%);
-    margin:13px auto 0;
+/* =========================================================
+   M4 - DETEKTIF PENYEBAB: PERMAINAN PANAH
+========================================================= */
+.detective-arrow-hud{
+    width:min(1060px,86%);
+    margin:9px auto 0;
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:10px;
+    gap:8px;
 }
 
-.detective-choice{
-    min-height:74px;
-    border:2px solid #d3e4e8;
-    border-radius:14px;
+.detective-arrow-hud > div{
+    min-height:38px;
+    border-radius:12px;
     background:#fff;
-    color:#111;
-    padding:10px 12px;
-    font-size:clamp(12px,.86vw,15px);
-    line-height:1.3;
+    box-shadow:0 5px 14px rgba(0,60,90,.08);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    color:#24495d;
+    font-size:clamp(10px,.74vw,13px);
     font-weight:900;
 }
-.detective-choice.selected{background:#e3f3f6;border-color:#168fb5;}
-.detective-choice.correct{background:#e5f6eb;border-color:#72bb8d;color:#155c35;}
-.detective-choice.wrong{background:#fff0ef;border-color:#db928c;color:#8b332d;}
+
+.detective-arrow-hud strong{
+    color:#0e6fa8;
+    font-size:clamp(15px,1.15vw,20px);
+}
+
+.detective-arrow-stage{
+    position:relative;
+    width:min(1100px,88%);
+    height:36%;
+    min-height:235px;
+    margin:8px auto 0;
+    overflow:hidden;
+    border-radius:22px;
+    background:
+        radial-gradient(circle at 50% 115%,rgba(255,220,112,.58),transparent 34%),
+        linear-gradient(180deg,#e8f8fb,#cfeef3);
+    border:2px solid rgba(22,143,181,.16);
+    box-shadow:inset 0 0 34px rgba(18,118,151,.08),0 10px 24px rgba(0,60,90,.10);
+}
+
+.detective-target-layer{
+    position:absolute;
+    inset:0;
+    z-index:3;
+}
+
+.detective-target{
+    position:absolute;
+    width:29%;
+    min-height:58px;
+    padding:9px 11px;
+    border:2px solid #fff;
+    border-radius:15px;
+    background:linear-gradient(145deg,#ffffff,#f1f8fb);
+    color:#111;
+    font-size:clamp(11px,.79vw,14px);
+    line-height:1.25;
+    font-weight:950;
+    text-align:center;
+    box-shadow:0 8px 18px rgba(0,70,100,.16);
+    cursor:crosshair;
+    touch-action:manipulation;
+    user-select:none;
+    animation:detectiveTargetDrift var(--duration,2.8s) ease-in-out infinite alternate;
+    animation-delay:var(--delay,0s);
+    transition:background .16s ease,border-color .16s ease,box-shadow .16s ease,filter .16s ease;
+}
+
+.detective-target:hover{
+    filter:brightness(1.04);
+    box-shadow:0 11px 24px rgba(0,70,100,.22);
+}
+
+.detective-target.hit-correct{
+    animation-play-state:paused !important;
+    background:#dff6e8;
+    border-color:#4eb27a;
+    color:#145f38;
+    box-shadow:0 0 0 3px rgba(78,178,122,.17),0 9px 22px rgba(0,90,60,.18);
+    cursor:default;
+}
+
+.detective-target.hit-wrong{
+    background:#ffe6e3;
+    border-color:#de6f67;
+    color:#8a2b25;
+    animation-play-state:paused;
+}
+
+.detective-target.aiming{
+    animation-play-state:paused;
+    box-shadow:0 0 0 4px rgba(255,188,38,.32),0 10px 24px rgba(0,70,100,.20);
+}
+
+.detective-bow{
+    position:absolute;
+    z-index:4;
+    left:50%;
+    bottom:1.5%;
+    transform:translateX(-50%);
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:rgba(255,255,255,.94);
+    border:2px solid rgba(17,105,145,.18);
+    box-shadow:0 7px 18px rgba(0,60,90,.16);
+    font-size:34px;
+    pointer-events:none;
+}
+
+.detective-arrow{
+    position:absolute;
+    z-index:15;
+    left:0;
+    top:0;
+    width:34px;
+    height:24px;
+    display:grid;
+    place-items:center;
+    color:#8a541d;
+    font-size:27px;
+    font-weight:950;
+    line-height:1;
+    pointer-events:none;
+    transform-origin:center;
+    transition:transform .30s linear;
+    filter:drop-shadow(0 2px 2px rgba(0,0,0,.18));
+}
+
+.detective-impact{
+    position:absolute;
+    z-index:14;
+    width:38px;
+    height:38px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:rgba(255,255,255,.95);
+    font-size:24px;
+    pointer-events:none;
+    animation:detectiveImpact .55s ease forwards;
+}
+
+@keyframes detectiveTargetDrift{
+    from{transform:translate(var(--x1,-4%),var(--y1,-3%)) rotate(-.4deg);}
+    to{transform:translate(var(--x2,5%),var(--y2,4%)) rotate(.4deg);}
+}
+
+@keyframes detectiveImpact{
+    0%{opacity:0;transform:scale(.35);}
+    35%{opacity:1;transform:scale(1.12);}
+    100%{opacity:0;transform:scale(1.45);}
+}
 
 /* M5 SUSUN MITIGASI */
 .sort-board{
@@ -2800,7 +3071,7 @@ user-select:none;
     margin:12px auto 8px;
 
     display:grid;
-    grid-template-columns:repeat(5,1fr);
+    grid-template-columns:repeat(6,1fr);
     gap:9px;
 }
 
@@ -2971,6 +3242,180 @@ user-select:none;
     font-weight:800;
 }
 
+
+.catch-help-row{
+    width:min(1120px,88%);
+    margin:5px auto 0;
+    display:flex;
+    justify-content:flex-end;
+}
+
+.catch-help-button{
+    min-height:36px;
+    padding:0 13px;
+    border:none;
+    border-radius:999px;
+    background:#0e6fa8;
+    color:#fff;
+    font-size:clamp(10px,.75vw,13px);
+    font-weight:900;
+    box-shadow:0 6px 15px rgba(0,60,90,.15);
+}
+
+.catch-word{
+    touch-action:manipulation;
+    user-select:none;
+    -webkit-user-select:none;
+}
+
+.catch-instruction-overlay{
+    position:absolute;
+    z-index:1500;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    background:rgba(7,33,49,.66);
+    backdrop-filter:blur(5px);
+}
+
+.catch-instruction-overlay.show{
+    display:flex;
+    animation:learningPopupFade .18s ease;
+}
+
+.catch-instruction-box{
+    width:min(930px,86%);
+    max-height:88%;
+    overflow:auto;
+    padding:clamp(20px,2vw,30px);
+    border-radius:26px;
+    background:#fff;
+    box-shadow:0 24px 65px rgba(0,0,0,.30);
+}
+
+.catch-instruction-head{
+    text-align:center;
+    margin-bottom:13px;
+}
+
+.catch-instruction-head .icon{
+    font-size:clamp(38px,3.4vw,56px);
+    line-height:1;
+}
+
+.catch-instruction-head h3{
+    margin:5px 0 4px;
+    color:#0f5998;
+    font-size:clamp(23px,2vw,34px);
+}
+
+.catch-instruction-head p{
+    margin:0;
+    color:#31515f;
+    font-size:clamp(12px,.9vw,16px);
+    font-weight:800;
+}
+
+.catch-step-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.catch-step{
+    min-height:118px;
+    padding:13px 12px;
+    border-radius:16px;
+    background:#edf8fb;
+    border:1px solid #d4eaef;
+    text-align:center;
+}
+
+.catch-step .step-icon{
+    font-size:30px;
+    line-height:1;
+}
+
+.catch-step strong{
+    display:block;
+    margin:6px 0 4px;
+    color:#105c9f;
+    font-size:clamp(12px,.9vw,15px);
+}
+
+.catch-step span{
+    display:block;
+    color:#243f4c;
+    font-size:clamp(10px,.72vw,13px);
+    line-height:1.35;
+    font-weight:800;
+}
+
+.catch-player-setup{
+    margin-top:13px;
+    padding:12px 14px;
+    border-radius:16px;
+    background:#fff7d8;
+    border:1px solid #ecd16a;
+    text-align:center;
+}
+
+.catch-player-setup b{
+    color:#3d3512;
+    font-size:clamp(12px,.9vw,15px);
+}
+
+.catch-player-buttons{
+    margin:9px auto 5px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:7px;
+}
+
+.catch-player-btn{
+    width:42px;
+    height:38px;
+    border:2px solid #bddbe5;
+    border-radius:11px;
+    background:#fff;
+    color:#18465c;
+    font-weight:950;
+}
+
+.catch-player-btn.active{
+    background:#168fb5;
+    border-color:#168fb5;
+    color:#fff;
+}
+
+.catch-team-note{
+    margin:5px 0 0;
+    color:#4b431d;
+    font-size:clamp(10px,.75vw,13px);
+    line-height:1.35;
+    font-weight:800;
+}
+
+.catch-ready-row{
+    margin-top:13px;
+    display:flex;
+    justify-content:center;
+}
+
+.catch-ready-btn{
+    min-width:210px;
+    min-height:48px;
+    border:none;
+    border-radius:14px;
+    background:#168fb5;
+    color:#fff;
+    font-size:clamp(13px,1vw,17px);
+    font-weight:950;
+    box-shadow:0 8px 19px rgba(0,90,125,.18);
+}
+
 @keyframes catchWordIn{
     from{
         opacity:0;
@@ -3051,11 +3496,14 @@ user-select:none;
     .match-grid{gap:6px;}
     .match-clue,.match-target{min-height:55px;padding:6px 7px;}
     .case-card,.game-option-grid,.case-controls,.sort-board,.quick-box,.quick-options{width:76%;}
-    .detective-grid{width:80%;gap:7px;}
-    .detective-choice{min-height:62px;padding:7px;}
+    .detective-arrow-stage{width:90%;height:35%;min-height:190px;}
+    .detective-target{width:29.5%;min-height:50px;padding:7px 8px;font-size:10px;}
+    .detective-arrow-hud{width:88%;gap:6px;}
+    .catch-step-grid{grid-template-columns:repeat(2,1fr);}
     .result-grid{width:88%;gap:7px;}
     .result-card{min-height:120px;padding:10px 8px;}
 }
+
 
 
 
@@ -5512,6 +5960,622 @@ height:auto !important;
     }
 }
 
+
+/* =========================================================
+   TOMBOL PENJELASAN HASIL SIMULASI & POPUP
+========================================================= */
+.sim-conclusion-box{
+    padding:9px 12px 11px;
+    text-align:center;
+}
+
+.sim-explain-btn{
+    position:relative;
+    width:100%;
+    min-height:44px;
+    border:none;
+    border-radius:13px;
+    overflow:hidden;
+    background:linear-gradient(135deg,#ffd84d,#f4b91f);
+    color:#24210f;
+    font-size:clamp(11px,.82vw,15px);
+    font-weight:950;
+    box-shadow:0 7px 17px rgba(115,86,0,.16);
+    animation:simExplainBreath 2.2s ease-in-out infinite;
+}
+.sim-explain-btn::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:58%;
+    height:100%;
+    background:linear-gradient(110deg,transparent,rgba(255,255,255,.8),transparent);
+    transform:skewX(-25deg);
+    animation:simExplainShine 3.2s ease-in-out infinite;
+}
+.sim-explain-btn:hover{filter:brightness(1.04);transform:translateY(-2px);}
+.sim-conclusion-hint{
+    margin-top:5px;
+    color:#111;
+    font-size:clamp(9px,.66vw,12px);
+    line-height:1.3;
+    font-weight:800;
+}
+@keyframes simExplainBreath{0%,100%{transform:scale(1)}50%{transform:scale(1.015)}}
+@keyframes simExplainShine{0%,38%{left:-120%}72%,100%{left:150%}}
+
+.sim-explanation-card{width:min(930px,88%);}
+.sim-explanation-level{
+    width:max-content;
+    max-width:100%;
+    margin:0 auto 12px;
+    padding:7px 15px;
+    border-radius:999px;
+    background:#e6f3f6;
+    color:#0d5d7e;
+    font-size:clamp(12px,.9vw,16px);
+    font-weight:950;
+}
+.sim-explanation-level.low{background:#e3f6e9;color:#176239;}
+.sim-explanation-level.medium{background:#fff2c9;color:#735500;}
+.sim-explanation-level.high{background:#ffe5e2;color:#8a3129;}
+.sim-explanation-section{
+    margin-top:10px;
+    padding:12px 14px;
+    border-radius:15px;
+    background:#f5fafc;
+    border:1px solid #dcecf0;
+}
+.sim-explanation-section.conclusion{background:#fff8dc;border-color:#efd370;}
+.sim-explanation-section h4{
+    margin:0 0 6px;
+    color:#0d5791;
+    font-size:clamp(14px,1.02vw,18px);
+}
+.sim-explanation-section p{
+    margin:0;
+    color:#111;
+    font-size:clamp(12px,.9vw,16px);
+    line-height:1.5;
+    font-weight:800;
+}
+.sim-input-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.sim-input-chip{
+    padding:9px 10px;
+    border-radius:12px;
+    background:#fff;
+    border:1px solid #dce8ec;
+    color:#111;
+    font-size:clamp(10px,.76vw,13px);
+    line-height:1.3;
+    font-weight:850;
+}
+.sim-input-chip strong{display:block;color:#0d5d97;margin-bottom:2px;}
+
+/* =========================================================
+   RESPONSIVE REVISI GAME
+========================================================= */
+@media(max-width:900px){
+    .guide-button{bottom:27.5%;min-height:40px;font-size:12px;}
+    .guide-step-grid{grid-template-columns:repeat(3,1fr);gap:8px;}
+    .guide-step{min-height:105px;padding:10px;}
+    .catch-hud{grid-template-columns:repeat(6,1fr);gap:5px;margin-top:5px;}
+    .catch-hud > div{min-height:38px;font-size:8px;gap:3px;}
+    .catch-hud strong{font-size:14px;}
+    .catch-arena{height:52%;}
+    .catch-help-row{margin-top:2px;}
+    .catch-step{min-height:92px;padding:9px;}
+    .case-controls{width:86%;margin-top:6px;}
+}
+
+@media(max-height:620px){
+    .guide-button{bottom:26.5%;}
+    .guide-modal-panel{width:min(1100px,92%);}
+    .guide-step{min-height:100px;padding:10px;}
+    .detective-arrow-stage{height:35%;min-height:205px;}
+    .detective-target{min-height:46px;padding:6px 8px;}
+    .catch-arena{height:49%;}
+    .catch-instruction-box{padding:15px 18px;}
+    .catch-step{min-height:86px;}
+}
+
+
+/* =========================================================
+   POPUP PANDUAN BERMAIN & BERLATIH
+========================================================= */
+.media-guide-overlay{
+    position:absolute;
+    z-index:2600;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:3%;
+    background:rgba(8,31,48,.68);
+    backdrop-filter:blur(5px);
+}
+.media-guide-overlay.show{display:flex;animation:mediaGuideFade .18s ease;}
+@keyframes mediaGuideFade{from{opacity:0}to{opacity:1}}
+
+.media-guide-card{
+    width:min(980px,88%);
+    max-height:88%;
+    overflow:auto;
+    padding:clamp(20px,2vw,32px);
+    border-radius:26px;
+    background:#fff;
+    box-shadow:0 28px 75px rgba(0,0,0,.32);
+    color:#111;
+}
+
+.media-guide-head{text-align:center;margin-bottom:16px;}
+.media-guide-icon{
+    width:clamp(62px,5.5vw,86px);
+    height:clamp(62px,5.5vw,86px);
+    margin:0 auto 10px;
+    display:grid;
+    place-items:center;
+    border-radius:22px;
+    background:#e5f4f8;
+    font-size:clamp(32px,3vw,47px);
+}
+.media-guide-head h3{
+    margin:0;
+    color:#0d5791;
+    font-size:clamp(24px,2.2vw,38px);
+    line-height:1.1;
+}
+.media-guide-head p{
+    max-width:760px;
+    margin:8px auto 0;
+    color:#111;
+    font-size:clamp(13px,1vw,18px);
+    line-height:1.45;
+    font-weight:800;
+}
+
+.media-guide-steps{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+.media-guide-step{
+    min-height:104px;
+    padding:14px 15px;
+    border-radius:17px;
+    background:#f4fafc;
+    border:1px solid #d9ecf1;
+    display:grid;
+    grid-template-columns:42px 1fr;
+    gap:10px;
+    align-items:start;
+}
+.media-guide-step .step-no{
+    width:40px;
+    height:40px;
+    display:grid;
+    place-items:center;
+    border-radius:13px;
+    background:#168fb5;
+    color:#fff;
+    font-weight:950;
+    font-size:18px;
+}
+.media-guide-step strong{
+    display:block;
+    color:#0d5791;
+    font-size:clamp(14px,1.05vw,18px);
+    margin-bottom:3px;
+}
+.media-guide-step span{
+    display:block;
+    color:#111;
+    font-size:clamp(11px,.84vw,15px);
+    line-height:1.4;
+    font-weight:800;
+}
+
+.media-guide-note{
+    margin-top:13px;
+    padding:11px 14px;
+    border-radius:14px;
+    background:#fff6d7;
+    border:1px solid #efd170;
+    color:#111;
+    font-size:clamp(11px,.85vw,15px);
+    line-height:1.4;
+    font-weight:900;
+}
+.media-guide-actions{
+    margin-top:17px;
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+.media-guide-btn{
+    min-width:175px;
+    min-height:48px;
+    padding:0 18px;
+    border:none;
+    border-radius:14px;
+    font-size:clamp(13px,1vw,17px);
+    font-weight:950;
+    cursor:pointer;
+}
+.media-guide-btn.primary{background:#168fb5;color:#fff;}
+.media-guide-btn.secondary{background:#eef3f5;color:#173e53;}
+.practice-result-btn:disabled{
+    opacity:.48;
+    cursor:not-allowed;
+    filter:grayscale(.2);
+}
+
+@media(max-width:900px){
+    .media-guide-card{width:92%;padding:14px 16px;}
+    .media-guide-steps{gap:8px;}
+    .media-guide-step{min-height:88px;padding:10px;grid-template-columns:34px 1fr;gap:8px;}
+    .media-guide-step .step-no{width:32px;height:32px;font-size:14px;}
+    .media-guide-actions{margin-top:10px;}
+    .media-guide-btn{min-height:40px;min-width:145px;font-size:11px;}
+    .sim-input-summary{grid-template-columns:1fr;}
+    .sim-explanation-section{padding:9px 10px;}
+}
+
+/* =========================================================
+   RESET SEMUA PROGRES
+========================================================= */
+
+.reset-progress-btn{
+    position:absolute;
+    z-index:20;
+
+    right:-1.5%;
+    bottom:-17%;
+
+    border:none;
+    border-radius:999px;
+
+    padding:
+        clamp(9px,.8vw,13px)
+        clamp(15px,1.4vw,24px);
+
+    background:#e74c3c;
+    color:#ffffff;
+
+    font-size:clamp(11px,.85vw,15px);
+    font-weight:900;
+
+    box-shadow:
+        0 8px 22px rgba(0,0,0,.22);
+
+    cursor:pointer;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+    animation:
+        resetBtnBreathing 2.5s ease-in-out infinite;
+}
+
+.reset-progress-btn:hover{
+    transform:scale(1.06);
+    box-shadow:
+        0 12px 28px rgba(0,0,0,.28);
+}
+
+.reset-progress-btn:active{
+    transform:scale(.96);
+}
+
+@keyframes resetBtnBreathing{
+
+    0%,100%{
+        scale:1;
+    }
+
+    50%{
+        scale:1.035;
+    }
+}
+
+/* =========================================================
+   POPUP RESET SEMUA PROGRES
+========================================================= */
+
+.reset-progress-popup{
+    position:absolute;
+    inset:0;
+
+    z-index:3000;
+
+    display:none;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(7,31,48,.68);
+
+    backdrop-filter:blur(7px);
+    -webkit-backdrop-filter:blur(7px);
+}
+
+.reset-progress-popup.show{
+    display:flex;
+
+    animation:
+        resetPopupFade .2s ease;
+}
+
+
+@keyframes resetPopupFade{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+
+.reset-progress-panel{
+
+    width:min(650px,78%);
+
+    padding:
+        clamp(25px,2.5vw,42px);
+
+    background:#ffffff;
+
+    border-radius:
+        clamp(22px,2vw,32px);
+
+    text-align:center;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.32);
+
+    animation:
+        resetPopupIn .25s ease;
+}
+
+
+@keyframes resetPopupIn{
+
+    from{
+        opacity:0;
+        transform:
+            translateY(18px)
+            scale(.96);
+    }
+
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+
+.reset-progress-icon{
+
+    width:
+        clamp(70px,6vw,95px);
+
+    height:
+        clamp(70px,6vw,95px);
+
+    margin:
+        0 auto 14px;
+
+    border-radius:50%;
+
+    display:grid;
+    place-items:center;
+
+    background:#fff1ee;
+
+    font-size:
+        clamp(34px,3vw,52px);
+}
+
+
+.reset-progress-panel h2{
+
+    margin:
+        0 0 10px;
+
+    color:#173f54;
+
+    font-size:
+        clamp(26px,2.3vw,40px);
+}
+
+
+.reset-progress-panel > p{
+
+    margin:
+        0 auto 18px;
+
+    max-width:560px;
+
+    color:#263a45;
+
+    font-size:
+        clamp(14px,1vw,18px);
+
+    line-height:1.5;
+
+    font-weight:700;
+}
+
+
+.reset-progress-warning{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:10px;
+
+    margin:
+        18px 0;
+
+    text-align:left;
+}
+
+
+.reset-progress-warning div{
+
+    padding:
+        12px 14px;
+
+    border-radius:14px;
+
+    background:#f2f7f9;
+
+    color:#111;
+
+    font-size:
+        clamp(12px,.9vw,16px);
+
+    font-weight:900;
+}
+
+
+.reset-progress-note{
+
+    color:#c0392b !important;
+
+    font-weight:900 !important;
+}
+
+
+.reset-progress-actions{
+
+    margin-top:20px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+}
+
+
+.reset-cancel-btn,
+.reset-confirm-btn{
+
+    min-height:
+        clamp(48px,4vw,58px);
+
+    padding:
+        0 22px;
+
+    border:none;
+
+    border-radius:15px;
+
+    font-size:
+        clamp(13px,1vw,17px);
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease;
+}
+
+
+.reset-cancel-btn{
+
+    background:#edf3f5;
+
+    color:#173f54;
+}
+
+
+.reset-confirm-btn{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#e74c3c;
+
+    color:#ffffff;
+
+    box-shadow:
+        0 9px 22px rgba(231,76,60,.28);
+
+    animation:
+        resetConfirmBreathing 2.3s ease-in-out infinite;
+}
+
+
+.reset-confirm-btn:hover,
+.reset-cancel-btn:hover{
+
+    transform:
+        translateY(-2px)
+        scale(1.03);
+}
+
+
+@keyframes resetConfirmBreathing{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.035);
+    }
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .reset-progress-warning{
+        gap:7px;
+    }
+
+    .reset-progress-warning div{
+        padding:9px 10px;
+    }
+
+}
+
+/* =========================================================
+   POSISI TOMBOL RESET KHUSUS MOBILE / HP LANDSCAPE
+   Desktop tetap memakai posisi custom di atas.
+   Tombol masih berada di dalam .activity-list, jadi nilai
+   bottom dikompensasi agar posisi visualnya tetap dekat
+   kanan-bawah canvas pada layar kecil.
+========================================================= */
+@media screen and (max-height:580px), screen and (max-width:850px){
+    .reset-progress-btn{
+        right:-1.5% !important;
+        bottom:-26% !important;
+
+        padding:7px 13px !important;
+        min-height:34px !important;
+        font-size:10px !important;
+        line-height:1.1 !important;
+        white-space:nowrap !important;
+
+        border-radius:999px !important;
+        z-index:60 !important;
+    }
+}
+
 </style>
 
 </head>
@@ -5571,6 +6635,17 @@ alt="Logo 1">
     <img class="top-logo" src="assets/logo/logo3.png" alt="Logo 3">
     <img class="top-logo" src="assets/logo/logo4.png" alt="Logo 4">
 </div>
+
+
+<!-- =====================================================
+     PANDUAN PENGGUNAAN
+===================================================== -->
+<button
+class="guide-button"
+onclick="openModal('guideModal')"
+aria-label="Buka panduan penggunaan media">
+📖 Panduan Penggunaan
+</button>
 
 
 <!-- =====================================================
@@ -5757,6 +6832,11 @@ lewat berbagai aktivitas seru!
 
 <div class="activity-list">
 
+<button
+    class="reset-progress-btn"
+    onclick="resetSemuaProgres()">
+    🔄 Reset Semua Progres
+</button>
 
 <!-- =====================================================
      BELAJAR
@@ -5796,7 +6876,7 @@ Materi pembelajaran: Pahami ragam potensi bencana di Indonesia
 
 <button
 class="activity-card card-berlatih"
-onclick="startPractice()">
+onclick="openPracticeGuide()">
 
 
 <div class="activity-icon">
@@ -6689,35 +7769,35 @@ id="glossaryScreen">
         </div>
 
         <div class="game-menu-grid">
-            <button class="game-menu-card c1" onclick="showScreen('bermainM2')">
+            <button class="game-menu-card c1" onclick="openGameGuide('match')">
                 <div class="game-menu-icon">🧩</div>
                 <h3>Cocokkan Bencana</h3>
                 <p>Pasangkan ciri kejadian dengan jenis bencananya.</p>
                 <div class="game-badge" id="playBadgeMatch">0 / 6 cocok</div>
             </button>
 
-            <button class="game-menu-card c2" onclick="showScreen('bermainM3')">
+            <button class="game-menu-card c2" onclick="openGameGuide('wordsearch')">
     <div class="game-menu-icon">🔎</div>
     <h3>Cari Kata</h3>
     <p>Temukan istilah materi yang tersembunyi dalam kotak 15×15.</p>
     <div class="game-badge" id="playBadgeRegion">0 / 8 kata</div>
 </button>
 
-            <button class="game-menu-card c3" onclick="showScreen('bermainM4')">
+            <button class="game-menu-card c3" onclick="openGameGuide('detective')">
                 <div class="game-menu-icon">🔍</div>
                 <h3>Detektif Penyebab</h3>
-                <p>Pilih data yang relevan untuk menganalisis masalah.</p>
+                <p>Bidik 3 data penyebab yang benar pada kartu bergerak.</p>
                 <div class="game-badge" id="playBadgeDetective">0 / 3 kasus</div>
             </button>
 
-            <button class="game-menu-card c4" onclick="showScreen('bermainM5')">
+            <button class="game-menu-card c4" onclick="openGameGuide('mitigation')">
                 <div class="game-menu-icon">🛡️</div>
                 <h3>Susun Mitigasi</h3>
                 <p>Urutkan tindakan aman secara logis dan sistematis.</p>
                 <div class="game-badge" id="playBadgeMitigation">0 / 2 kasus</div>
             </button>
 
-            <button class="game-menu-card c5" onclick="showScreen('bermainM6')">
+            <button class="game-menu-card c5" onclick="openCatchFromMenu()">
     <div class="game-menu-icon">⚡</div>
     <h3>Tangkap Kata</h3>
     <p>Tangkap sebanyak mungkin istilah materi dalam 30 detik.</p>
@@ -6861,24 +7941,34 @@ id="glossaryScreen">
 
 
 <!-- =========================================================
-     M4 - DETEKTIF PENYEBAB
+     M4 - DETEKTIF PENYEBAB: PANAH TARGET
 ========================================================= -->
 <section class="screen game-screen" id="bermainM4">
     <div class="game-shell">
         <div class="game-heading">
             <div class="game-kicker">BERMAIN • DETEKTIF PENYEBAB</div>
-            <h2 class="game-title">Pilih Data yang Benar-Benar Penting</h2>
-            <p class="game-subtitle">Gunakan abstraksi: pilih tepat 3 informasi yang paling relevan untuk menganalisis kasus.</p>
+            <h2 class="game-title">🏹 Bidik Data Penyebab yang Tepat!</h2>
+            <p class="game-subtitle">Enam kartu bergerak di arena. Bidik <b>3 data yang benar</b> dengan menyentuh kartu sebelum target bergerak menjauh.</p>
         </div>
 
-        <div class="case-card" style="margin-top:12px;padding:14px 20px">
+        <div class="case-card" style="margin-top:8px;padding:10px 18px">
             <div class="case-number" id="detectiveCaseNo">KASUS 1 / 3</div>
-            <h3 id="detectiveScenario" style="font-size:clamp(17px,1.35vw,23px)">Memuat kasus...</h3>
+            <h3 id="detectiveScenario" style="font-size:clamp(15px,1.15vw,20px);margin-top:5px">Memuat kasus...</h3>
         </div>
-        <div class="detective-grid" id="detectiveChoices"></div>
+
+        <div class="detective-arrow-hud">
+            <div>🎯 TARGET BENAR <strong id="detectiveHitCount">0 / 3</strong></div>
+            <div>🏹 TEMBAKAN <strong id="detectiveShotCount">0</strong></div>
+            <div>🧠 MISI <strong>Pilih penyebab relevan</strong></div>
+        </div>
+
+        <div class="detective-arrow-stage" id="detectiveArrowStage">
+            <div class="detective-target-layer" id="detectiveChoices"></div>
+            <div class="detective-bow" id="detectiveBow" aria-hidden="true">🏹</div>
+        </div>
+
         <div class="case-controls">
-            <div class="game-feedback info" id="detectiveFeedback">Pilih tepat tiga informasi.</div>
-            <button class="game-small-btn" id="detectiveCheckBtn" onclick="checkDetectiveCase()">Periksa</button>
+            <div class="game-feedback info" id="detectiveFeedback">Bidik tiga kartu yang paling relevan dengan kasus.</div>
             <button class="game-small-btn" id="detectiveNextBtn" onclick="nextDetectiveCase()" style="display:none">Kasus Berikutnya →</button>
         </div>
 
@@ -6934,76 +8024,93 @@ id="glossaryScreen">
             <div class="game-kicker">BERMAIN • TANGKAP KATA</div>
             <h2 class="game-title">⚡ Tangkap Kata!</h2>
             <p class="game-subtitle">
-                Sentuh sebanyak mungkin istilah yang berasal dari materi.
-                Hindari kata pengecoh!
+                Main sendiri atau bersama 2–6 pemain pada satu layar.
+                Sentuh istilah materi dan hindari kata pengecoh!
             </p>
         </div>
 
+        <div class="catch-help-row">
+            <button class="catch-help-button" onclick="openCatchInstructions()">📖 Cara Bermain & Mode Kelompok</button>
+        </div>
+
         <div class="catch-hud">
-
-            <div>
-                ⏱️ WAKTU
-                <strong id="catchTimer">30</strong>
-            </div>
-
-            <div>
-                ⭐ SKOR
-                <strong id="catchScore">0</strong>
-            </div>
-
-            <div>
-                ✅ BENAR
-                <strong id="catchCorrect">0</strong>
-            </div>
-
-            <div>
-                ❌ SALAH
-                <strong id="catchWrong">0</strong>
-            </div>
-
-            <div>
-                🔥 COMBO
-                <strong id="catchCombo">0</strong>
-            </div>
-
+            <div>⏱️ WAKTU <strong id="catchTimer">30</strong></div>
+            <div>⭐ SKOR TIM <strong id="catchScore">0</strong></div>
+            <div>✅ BENAR <strong id="catchCorrect">0</strong></div>
+            <div>❌ SALAH <strong id="catchWrong">0</strong></div>
+            <div>🔥 COMBO <strong id="catchCombo">0</strong></div>
+            <div>👥 PEMAIN <strong id="catchPlayers">3</strong></div>
         </div>
 
         <div class="catch-arena" id="catchArena">
-
             <div class="catch-start-panel" id="catchStartPanel">
                 <div class="catch-start-icon">⚡</div>
-
-                <h3>Siap Menguji Kecepatanmu?</h3>
-
+                <h3>Siap Bermain Bersama?</h3>
                 <p>
-                    Kata akan muncul dengan cepat di berbagai tempat.
-                    Tekan hanya istilah yang berhubungan dengan materi
-                    potensi bencana alam.
+                    Semua pemain dapat menyentuh kata yang berbeda secara bersamaan.
+                    Skor dihitung sebagai skor tim selama 30 detik.
                 </p>
-
-                <button
-                    class="game-small-btn"
-                    onclick="startCatchGame()">
-                    ▶ Mulai 30 Detik
-                </button>
+                <button class="game-small-btn" onclick="startCatchGame()">▶ Mulai 30 Detik</button>
             </div>
-
         </div>
 
         <div class="game-nav">
-            <button
-                class="game-nav-btn prev"
-                onclick="showScreen('bermainM1')">
-                ← Pilih Tantangan
-            </button>
-
+            <button class="game-nav-btn prev" onclick="showScreen('bermainM1')">← Pilih Tantangan</button>
             <div class="game-page">Bermain 6 / 7</div>
+            <button class="game-nav-btn next" onclick="showScreen('bermainM7')">Lihat Hasil →</button>
+        </div>
 
-            <button
-                class="game-nav-btn next"
-                onclick="showScreen('bermainM7')">
-                Lihat Hasil →
-            </button>
+        <!-- POPUP PETUNJUK TANGKAP KATA -->
+        <div class="catch-instruction-overlay" id="catchInstructionPopup" onclick="closeCatchInstructionByBackground(event)">
+            <div class="catch-instruction-box">
+                <div class="catch-instruction-head">
+                    <div class="icon">⚡👥</div>
+                    <h3>Cara Bermain Tangkap Kata</h3>
+                    <p>Dirancang untuk dimainkan sendiri maupun bersama beberapa murid pada layar sentuh/IFP.</p>
+                </div>
+
+                <div class="catch-step-grid">
+                    <div class="catch-step">
+                        <div class="step-icon">1️⃣</div>
+                        <strong>Pilih Jumlah Pemain</strong>
+                        <span>Pilih 1–6 pemain. Untuk permainan kelompok, 3–6 murid dapat bermain bersamaan.</span>
+                    </div>
+                    <div class="catch-step">
+                        <div class="step-icon">2️⃣</div>
+                        <strong>Amati Kata</strong>
+                        <span>Kata materi dan kata pengecoh akan muncul cepat di berbagai posisi selama 30 detik.</span>
+                    </div>
+                    <div class="catch-step">
+                        <div class="step-icon">3️⃣</div>
+                        <strong>Sentuh Bersamaan</strong>
+                        <span>Setiap pemain boleh menyentuh kata berbeda pada saat yang sama. Pilih hanya istilah potensi bencana.</span>
+                    </div>
+                    <div class="catch-step">
+                        <div class="step-icon">4️⃣</div>
+                        <strong>Kumpulkan Skor Tim</strong>
+                        <span>Jawaban benar menambah poin dan combo. Kata pengecoh mengurangi 5 poin serta memutus combo.</span>
+                    </div>
+                </div>
+
+                <div class="catch-player-setup">
+                    <b>👥 Jumlah pemain pada layar ini:</b>
+                    <div class="catch-player-buttons" id="catchPlayerButtons">
+                        <button class="catch-player-btn" onclick="setCatchPlayerCount(1)">1</button>
+                        <button class="catch-player-btn" onclick="setCatchPlayerCount(2)">2</button>
+                        <button class="catch-player-btn active" onclick="setCatchPlayerCount(3)">3</button>
+                        <button class="catch-player-btn" onclick="setCatchPlayerCount(4)">4</button>
+                        <button class="catch-player-btn" onclick="setCatchPlayerCount(5)">5</button>
+                        <button class="catch-player-btn" onclick="setCatchPlayerCount(6)">6</button>
+                    </div>
+                    <p class="catch-team-note">
+                        Skor pada mode kelompok adalah <b>skor bersama</b>. Gunakan beberapa jari sekaligus pada layar sentuh agar setiap pemain dapat ikut menangkap kata.
+                    </p>
+                </div>
+
+                <div class="catch-ready-row">
+                    <button class="catch-ready-btn" onclick="closeCatchInstructions()">✓ Mengerti, Siap Bermain</button>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -7017,7 +8124,7 @@ id="glossaryScreen">
     <div class="game-shell">
         <div class="game-heading">
             <div class="game-kicker">BERMAIN • HASIL</div>
-            <h2 class="game-title">Hasil Tantanganmu</h2>
+            <h2 class="game-title">Hasil Pengerjaan</h2>
             <p class="game-subtitle">Hasil menunjukkan progres aktivitas dan ketepatan jawaban yang sudah kamu kerjakan.</p>
         </div>
 
@@ -7099,7 +8206,7 @@ id="glossaryScreen">
 
             <div class="practice-result-actions">
                 <button class="practice-result-btn secondary" onclick="startPractice()">↻ Ulangi Latihan</button>
-                <button class="practice-result-btn certificate" onclick="openCertificateForm()">🏆 Cetak Sertifikat</button>
+                <button class="practice-result-btn certificate" id="practiceCertificateBtn" onclick="openCertificateForm()">🏆 Cetak Sertifikat</button>
                 <button class="practice-result-btn" onclick="showScreen('activityScreen')">🏠 Pilih Aktivitas</button>
             </div>
         </div>
@@ -7257,8 +8364,10 @@ id="glossaryScreen">
                     </div>
                 </div>
                 <div class="sim-conclusion-box" id="simConclusionBox">
-                    <div class="sim-conclusion-title">💡 Kesimpulan Fenomena</div>
-                    <div class="sim-conclusion-text" id="simConclusionText">Jalankan simulasi untuk melihat kesimpulannya.</div>
+                    <button class="sim-explain-btn" id="simExplainBtn" onclick="openSimulationExplanation()">
+                        💡 Penjelasan & Kesimpulan
+                    </button>
+                    <div class="sim-conclusion-hint">Klik setelah simulasi selesai untuk memahami hubungan input dan fenomena yang terjadi.</div>
                 </div>
             </div>
 
@@ -7433,6 +8542,119 @@ id="glossaryScreen">
 </div>
 
 
+
+<!-- =========================================================
+     POPUP PANDUAN MODE BERMAIN
+========================================================= -->
+<div class="media-guide-overlay" id="gameGuidePopup" onclick="closeMediaGuideByBackground(event,'gameGuidePopup')">
+    <div class="media-guide-card">
+        <div class="media-guide-head">
+            <div class="media-guide-icon" id="gameGuideIcon">🎮</div>
+            <h3 id="gameGuideTitle">Panduan Permainan</h3>
+            <p id="gameGuideSubtitle">Baca langkah singkat berikut sebelum mulai.</p>
+        </div>
+        <div class="media-guide-steps" id="gameGuideSteps"></div>
+        <div class="media-guide-note" id="gameGuideNote">Selesaikan tantangan dengan teliti.</div>
+        <div class="media-guide-actions">
+            <button class="media-guide-btn secondary" onclick="closeGameGuide()">← Kembali</button>
+            <button class="media-guide-btn primary" onclick="startGuidedGame()">▶ Mulai Permainan</button>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================
+     POPUP PANDUAN BERLATIH
+========================================================= -->
+<div class="media-guide-overlay" id="practiceGuidePopup" onclick="closeMediaGuideByBackground(event,'practiceGuidePopup')">
+    <div class="media-guide-card">
+        <div class="media-guide-head">
+            <div class="media-guide-icon">📝</div>
+            <h3>Cara Mengerjakan Latihan</h3>
+            <p>Latihan terdiri dari 10 soal pilihan ganda. Bacalah pertanyaan dan penjelasan umpan balik pada setiap nomor.</p>
+        </div>
+        <div class="media-guide-steps">
+            <div class="media-guide-step"><div class="step-no">1</div><div><strong>Baca Soal</strong><span>Perhatikan topik dan pertanyaan pada kartu soal sebelum memilih jawaban.</span></div></div>
+            <div class="media-guide-step"><div class="step-no">2</div><div><strong>Pilih A, B, C, atau D</strong><span>Klik satu jawaban yang menurutmu paling tepat. Jawaban hanya dapat dipilih sekali pada setiap soal.</span></div></div>
+            <div class="media-guide-step"><div class="step-no">3</div><div><strong>Pelajari Umpan Balik</strong><span>Setelah menjawab, sistem menunjukkan jawaban benar beserta penjelasannya. Baca sebelum lanjut.</span></div></div>
+            <div class="media-guide-step"><div class="step-no">4</div><div><strong>Lanjut hingga Soal 10</strong><span>Setiap jawaban benar bernilai 10 poin. Skor akhir maksimal adalah 100.</span></div></div>
+            <div class="media-guide-step"><div class="step-no">5</div><div><strong>Lulus & Cetak Sertifikat</strong><span>Skor minimal kelulusan media adalah 75. Jika lulus, tombol Cetak Sertifikat akan aktif pada halaman hasil.</span></div></div>
+            <div class="media-guide-step"><div class="step-no">6</div><div><strong>Belum Lulus?</strong><span>Kembali pelajari materi yang masih sulit, lalu gunakan tombol Ulangi Latihan untuk memperbaiki skor.</span></div></div>
+        </div>
+        <div class="media-guide-note">🏆 Sertifikat menjadi tanda bahwa latihan soal telah diselesaikan dengan nilai minimal 75.</div>
+        <div class="media-guide-actions">
+            <button class="media-guide-btn secondary" onclick="closePracticeGuide()">← Kembali</button>
+            <button class="media-guide-btn primary" onclick="beginPracticeFromGuide()">▶ Mulai Latihan</button>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================
+     POPUP PANDUAN HASIL & SERTIFIKAT
+========================================================= -->
+<div class="media-guide-overlay" id="practiceResultGuidePopup" onclick="closeMediaGuideByBackground(event,'practiceResultGuidePopup')">
+    <div class="media-guide-card" style="width:min(820px,86%)">
+        <div class="media-guide-head">
+            <div class="media-guide-icon" id="practiceResultGuideIcon">🏆</div>
+            <h3 id="practiceResultGuideTitle">Hasil Latihan</h3>
+            <p id="practiceResultGuideText">Lihat hasil latihanmu.</p>
+        </div>
+        <div class="media-guide-steps" id="practiceResultGuideSteps"></div>
+        <div class="media-guide-note" id="practiceResultGuideNote">Gunakan hasil sebagai bahan refleksi belajar.</div>
+        <div class="media-guide-actions">
+            <button class="media-guide-btn secondary" onclick="closePracticeResultGuide()">✓ Lihat Hasil</button>
+            <button class="media-guide-btn primary" id="practiceResultGuideAction" onclick="practiceResultGuideAction()">🏆 Cetak Sertifikat</button>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================
+     POPUP PANDUAN SIMULASI
+========================================================= -->
+<div class="media-guide-overlay" id="simulationGuidePopup" onclick="closeMediaGuideByBackground(event,'simulationGuidePopup')">
+    <div class="media-guide-card">
+        <div class="media-guide-head">
+            <div class="media-guide-icon" id="simulationGuideIcon">🧪</div>
+            <h3 id="simulationGuideTitle">Panduan Simulasi</h3>
+            <p id="simulationGuideSubtitle">Atur variabel kemudian amati hasil eksperimen.</p>
+        </div>
+        <div class="media-guide-steps" id="simulationGuideSteps"></div>
+        <div class="media-guide-note" id="simulationGuideNote">Ubah kombinasi variabel untuk membandingkan hasil.</div>
+        <div class="media-guide-actions">
+            <button class="media-guide-btn secondary" onclick="cancelSimulationGuide()">← Kembali</button>
+            <button class="media-guide-btn primary" onclick="beginSimulationFromGuide()">▶ Mulai Simulasi</button>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================
+     POPUP PENJELASAN & KESIMPULAN HASIL SIMULASI
+========================================================= -->
+<div class="media-guide-overlay" id="simulationExplanationPopup" onclick="closeMediaGuideByBackground(event,'simulationExplanationPopup')">
+    <div class="media-guide-card sim-explanation-card">
+        <div class="media-guide-head">
+            <div class="media-guide-icon" id="simulationExplanationIcon">💡</div>
+            <h3 id="simulationExplanationTitle">Penjelasan Hasil Simulasi</h3>
+            <p id="simulationExplanationSubtitle">Hasil berikut disusun dari kombinasi variabel yang kamu pilih.</p>
+        </div>
+        <div class="sim-explanation-level" id="simulationExplanationLevel">HASIL</div>
+        <div class="sim-explanation-section">
+            <h4>🎛️ Input yang Kamu Pilih</h4>
+            <div class="sim-input-summary" id="simulationInputSummary"></div>
+        </div>
+        <div class="sim-explanation-section">
+            <h4>🔎 Penjelasan Fenomena</h4>
+            <p id="simulationPhenomenonText"></p>
+        </div>
+        <div class="sim-explanation-section conclusion">
+            <h4>💡 Kesimpulan Fenomena</h4>
+            <p id="simulationConclusionPopupText"></p>
+        </div>
+        <div class="media-guide-actions">
+            <button class="media-guide-btn primary" onclick="closeSimulationExplanation()">✓ Mengerti</button>
+        </div>
+    </div>
+</div>
+
 <!-- =========================================================
      POPUP GLOBAL MATERI BELAJAR
 ========================================================= -->
@@ -7460,6 +8682,81 @@ id="glossaryScreen">
         </div>
     </div>
 </div>
+
+<!-- =========================================================
+     MODAL PANDUAN PENGGUNAAN MEDIA
+========================================================= -->
+<div
+class="modal-overlay"
+id="guideModal"
+onclick="closeByBackground(event,'guideModal')">
+
+    <div class="modal-panel guide-modal-panel">
+
+        <button
+        class="modal-close"
+        onclick="closeModal('guideModal')">×</button>
+
+        <h3 class="modal-title">📖 Panduan Penggunaan Media</h3>
+
+        <div class="modal-body">
+            <p class="guide-intro">
+                Ikuti alur berikut agar pembelajaran tentang potensi bencana alam berlangsung runtut.
+                Kamu tetap dapat kembali ke menu <b>Pilih Aktivitas</b> melalui tombol 🏠.
+            </p>
+
+            <div class="guide-step-grid">
+                <div class="guide-step">
+                    <div class="guide-step-number">1</div>
+                    <div class="guide-step-icon">🎬</div>
+                    <h4>Mulai & Apersepsi</h4>
+                    <p>Tekan <b>Mulai Belajar</b>, amati video apersepsi, lalu lanjutkan menuju menu aktivitas.</p>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-number">2</div>
+                    <div class="guide-step-icon">🧭</div>
+                    <h4>Pilih Aktivitas</h4>
+                    <p>Gunakan menu utama untuk membuka Belajar, Berlatih, Bermain, Simulasi, Refleksi, atau Glosarium.</p>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-number">3</div>
+                    <div class="guide-step-icon">🌍</div>
+                    <h4>Pelajari Materi</h4>
+                    <p>Ikuti materi Belajar secara berurutan untuk mengenali bencana, kondisi geografis, pola, dan mitigasi.</p>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-number">4</div>
+                    <div class="guide-step-icon">🎮</div>
+                    <h4>Berlatih & Bermain</h4>
+                    <p>Uji pemahaman melalui kuis serta permainan interaktif. Baca petunjuk pada setiap tantangan sebelum bermain.</p>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-number">5</div>
+                    <div class="guide-step-icon">🧪</div>
+                    <h4>Lakukan Simulasi</h4>
+                    <p>Ubah variabel yang tersedia, amati hasilnya, lalu hubungkan perubahan kondisi dengan risiko bencana.</p>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-number">6</div>
+                    <div class="guide-step-icon">💭</div>
+                    <h4>Refleksi</h4>
+                    <p>Akhiri pembelajaran dengan merefleksikan pemahaman dan komitmen tindakan mitigasi yang dapat dilakukan.</p>
+                </div>
+            </div>
+
+            <div class="guide-tip">
+                💡 <b>Tips:</b> Gunakan media dalam posisi <b>landscape</b>. Pada layar sentuh/IFP, tombol dan objek permainan dapat disentuh langsung.
+                <p>🔄 <b>Tips:</b> Gunakan tombol reset di sebelah tombol glosarium untuk mereset seluruh progres dari awal.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- =========================================================
      MODAL INFO PEMBELAJARAN
@@ -7921,6 +9218,11 @@ onclick="closeModal('referenceModal')">
         Bandung: Badan Geologi, Kementerian Energi dan Sumber Daya Mineral.
     </li>
 
+    <li>
+        <b>Sumber Backsound: Lagu Rukun Sama Teman</b> 
+        Cipt. Prof. Dr. Abdul Mu'ti, M.Ed. - Arr. Dwiki Dharmawan, M.Sn. -
+        Transcribed by Ilham Sastrodihardjo (Youtube: Sastrodihardjo Studio)
+    </li>
 
 </ul>
 
@@ -7937,9 +9239,9 @@ onclick="closeModal('referenceModal')">
 
 <p>
 
-Media pembelajaran interaktif ini
+Media pembelajaran interaktif ini (termasuk didalamnya aset video, cover, dan background terkecuali foto berita)
 dikembangkan dengan bantuan
-teknologi kecerdasan buatan
+teknologi kecerdasan buatan (Google Flow, Gemini, dan ChatGPT)
 dalam proses perancangan,
 pengembangan kode,
 dan pembuatan sebagian aset visual.
@@ -8041,10 +9343,234 @@ pada tahap berikutnya.
 </div>
 
 
+<!-- =========================================================
+     POPUP RESET SEMUA PROGRES
+========================================================= -->
+<div class="reset-progress-popup" id="resetProgressPopup" onclick="if(event.target===this)tutupResetProgressPopup()">
+
+    <div class="reset-progress-panel">
+
+        <div class="reset-progress-icon">
+            🔄
+        </div>
+
+        <h2>Reset Semua Progres?</h2>
+
+        <p>
+            Semua progres pada media pembelajaran akan dikembalikan
+            seperti saat pertama kali digunakan.
+        </p>
+
+        <div class="reset-progress-warning">
+            <div>🎮 Progres permainan akan dihapus</div>
+            <div>📝 Nilai latihan akan dihapus</div>
+            <div>🧪 Hasil simulasi akan dihapus</div>
+            <div>🏆 Data kelulusan latihan akan direset</div>
+        </div>
+
+        <p class="reset-progress-note">
+            Tindakan ini tidak dapat dibatalkan.
+        </p>
+
+        <div class="reset-progress-actions">
+
+            <button
+                class="reset-cancel-btn"
+                onclick="tutupResetProgressPopup()">
+                ← Batal
+            </button>
+
+            <button
+                class="reset-confirm-btn"
+                onclick="konfirmasiResetSemuaProgres()">
+                🔄 Ya, Reset Semua
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
 </div>
 
 
 <script>
+
+/* =========================================================
+   PANDUAN SEMUA MODE BERMAIN
+========================================================= */
+const gameGuideData={
+    match:{
+        target:'bermainM2',icon:'🧩',title:'Cara Bermain Cocokkan Bencana',
+        subtitle:'Pasangkan setiap ciri kejadian dengan jenis bencana yang sesuai.',
+        note:'💡 Kamu dapat bermain dengan klik-ketik atau drag-and-drop pada perangkat yang mendukung.',
+        steps:[
+            ['Pilih Kartu Petunjuk','Klik salah satu ciri kejadian di kolom kiri.'],
+            ['Cari Pasangannya','Klik jenis bencana yang paling sesuai di kolom kanan.'],
+            ['Cek Umpan Balik','Pasangan benar akan terkunci. Jika salah, coba analisis kembali cirinya.'],
+            ['Selesaikan 6 Pasangan','Tuntaskan seluruh kartu sampai progres menunjukkan 6 / 6 cocok.']
+        ]
+    },
+    wordsearch:{
+        target:'bermainM3',icon:'🔎',title:'Cara Bermain Cari Kata',
+        subtitle:'Temukan 8 istilah materi yang tersembunyi dalam kotak huruf.',
+        note:'💡 Susunan huruf dapat berubah ketika permainan diacak ulang.',
+        steps:[
+            ['Lihat Daftar Kata','Perhatikan 8 istilah yang harus ditemukan pada panel kanan.'],
+            ['Mulai dari Huruf Awal','Tekan dan tahan huruf pertama dari kata yang kamu temukan.'],
+            ['Geser sampai Huruf Akhir','Tarik secara lurus hingga huruf terakhir, lalu lepaskan.'],
+            ['Temukan Semua Kata','Kata yang benar akan ditandai dan progres bertambah sampai 8 / 8.']
+        ]
+    },
+    detective:{
+        target:'bermainM4',icon:'🏹',title:'Cara Bermain Detektif Penyebab',
+        subtitle:'Baca kasus, lalu bidik 3 data penyebab yang benar di antara 6 kartu bergerak.',
+        note:'🎯 Panah ditembakkan dari bawah arena. Jarak target dibuat lebih jauh agar gerak panah lebih jelas terlihat.',
+        steps:[
+            ['Baca Kasus','Pahami situasi bencana yang tampil di bagian atas arena.'],
+            ['Amati 6 Target','Ada 3 jawaban benar dan 3 pengecoh yang terus bergerak.'],
+            ['Sentuh Target','Klik atau sentuh kartu yang kamu anggap benar untuk menembakkan panah.'],
+            ['Dapatkan 3 Target Benar','Selesaikan setiap kasus dengan mengenai tiga data relevan. Ada 3 kasus.']
+        ]
+    },
+    mitigation:{
+        target:'bermainM5',icon:'🛡️',title:'Cara Bermain Susun Mitigasi',
+        subtitle:'Urutkan langkah mitigasi dari tindakan awal hingga tindakan akhir secara logis.',
+        note:'💡 Gunakan drag-and-drop atau tombol ↑ ↓ pada kartu untuk mengubah urutan.',
+        steps:[
+            ['Baca Situasi','Pahami kasus mitigasi yang diberikan.'],
+            ['Susun Kartu','Geser kartu atau gunakan tombol ↑ ↓ sampai urutannya masuk akal.'],
+            ['Periksa Urutan','Tekan tombol Periksa Urutan untuk mengecek jawaban.'],
+            ['Lanjutkan Kasus','Perbaiki jika belum tepat, lalu selesaikan seluruh kasus mitigasi.']
+        ]
+    }
+};
+
+let pendingGameGuideTarget=null;
+
+function openGameGuide(key){
+    const data=gameGuideData[key];
+    const popup=document.getElementById('gameGuidePopup');
+    if(!data || !popup) return;
+
+    pendingGameGuideTarget=data.target;
+    document.getElementById('gameGuideIcon').textContent=data.icon;
+    document.getElementById('gameGuideTitle').textContent=data.title;
+    document.getElementById('gameGuideSubtitle').textContent=data.subtitle;
+    document.getElementById('gameGuideNote').textContent=data.note;
+
+    const steps=document.getElementById('gameGuideSteps');
+    steps.innerHTML='';
+    data.steps.forEach((item,index)=>{
+        const div=document.createElement('div');
+        div.className='media-guide-step';
+        div.innerHTML='<div class="step-no">'+(index+1)+'</div><div><strong>'+item[0]+'</strong><span>'+item[1]+'</span></div>';
+        steps.appendChild(div);
+    });
+
+    popup.classList.add('show');
+}
+
+function closeGameGuide(){
+    document.getElementById('gameGuidePopup')?.classList.remove('show');
+    pendingGameGuideTarget=null;
+}
+
+function startGuidedGame(){
+    const target=pendingGameGuideTarget;
+    document.getElementById('gameGuidePopup')?.classList.remove('show');
+    pendingGameGuideTarget=null;
+    if(target) showScreen(target);
+}
+
+function openCatchFromMenu(){
+    showScreen('bermainM6');
+    setTimeout(openCatchInstructions,80);
+}
+
+function closeMediaGuideByBackground(event,id){
+    if(event.target===event.currentTarget){
+        document.getElementById(id)?.classList.remove('show');
+        if(id==='gameGuidePopup') pendingGameGuideTarget=null;
+        if(id==='simulationGuidePopup') pendingSimulationType=null;
+    }
+}
+
+/* =========================================================
+   PANDUAN BERLATIH & SERTIFIKAT
+========================================================= */
+const PRACTICE_PASS_SCORE=75;
+
+function openPracticeGuide(){
+    document.getElementById('practiceGuidePopup')?.classList.add('show');
+}
+
+function closePracticeGuide(){
+    document.getElementById('practiceGuidePopup')?.classList.remove('show');
+}
+
+function beginPracticeFromGuide(){
+    closePracticeGuide();
+    startPractice();
+}
+
+function openPracticeResultGuide(){
+    const popup=document.getElementById('practiceResultGuidePopup');
+    if(!popup) return;
+
+    const score=practiceScore*10;
+    const passed=score>=PRACTICE_PASS_SCORE;
+    const icon=document.getElementById('practiceResultGuideIcon');
+    const title=document.getElementById('practiceResultGuideTitle');
+    const text=document.getElementById('practiceResultGuideText');
+    const steps=document.getElementById('practiceResultGuideSteps');
+    const note=document.getElementById('practiceResultGuideNote');
+    const action=document.getElementById('practiceResultGuideAction');
+
+    if(passed){
+        icon.textContent='🏆';
+        title.textContent='Selamat, Kamu Lulus Latihan!';
+        text.textContent='Skormu '+score+'. Kamu sudah mencapai batas kelulusan minimal '+PRACTICE_PASS_SCORE+' dan dapat mencetak sertifikat.';
+        steps.innerHTML=''+
+            '<div class="media-guide-step"><div class="step-no">1</div><div><strong>Lihat Skor</strong><span>Periksa skor akhir dan nomor soal yang benar atau salah.</span></div></div>'+ 
+            '<div class="media-guide-step"><div class="step-no">2</div><div><strong>Klik Cetak Sertifikat</strong><span>Gunakan tombol 🏆 Cetak Sertifikat pada halaman hasil.</span></div></div>'+ 
+            '<div class="media-guide-step"><div class="step-no">3</div><div><strong>Isi Data Diri</strong><span>Masukkan nama, kelas, asal sekolah, dan tanggal dengan benar.</span></div></div>'+ 
+            '<div class="media-guide-step"><div class="step-no">4</div><div><strong>Buat & Cetak</strong><span>Tekan Buat & Cetak Sertifikat sebagai tanda lulus latihan soal.</span></div></div>';
+        note.textContent='🏆 Sertifikat hanya aktif untuk skor minimal '+PRACTICE_PASS_SCORE+'.';
+        action.textContent='🏆 Isi Data Sertifikat';
+    }else{
+        icon.textContent='📚';
+        title.textContent='Latihan Selesai — Ayo Coba Lagi';
+        text.textContent='Skormu '+score+'. Batas kelulusan untuk mencetak sertifikat adalah '+PRACTICE_PASS_SCORE+'.';
+        steps.innerHTML=''+
+            '<div class="media-guide-step"><div class="step-no">1</div><div><strong>Periksa Hasil</strong><span>Lihat nomor soal yang masih salah pada indikator hasil.</span></div></div>'+ 
+            '<div class="media-guide-step"><div class="step-no">2</div><div><strong>Pelajari Kembali</strong><span>Buka materi yang berkaitan dengan soal yang belum tepat.</span></div></div>'+ 
+            '<div class="media-guide-step"><div class="step-no">3</div><div><strong>Ulangi Latihan</strong><span>Kerjakan kembali 10 soal untuk meningkatkan skor.</span></div></div>'+ 
+            '<div class="media-guide-step"><div class="step-no">4</div><div><strong>Capai Minimal 75</strong><span>Setelah lulus, tombol sertifikat akan aktif otomatis.</span></div></div>';
+        note.textContent='🔒 Sertifikat belum aktif. Raih minimal '+PRACTICE_PASS_SCORE+' untuk membukanya.';
+        action.textContent='↻ Ulangi Latihan';
+    }
+
+    popup.dataset.passed=String(passed);
+    popup.classList.add('show');
+}
+
+function closePracticeResultGuide(){
+    document.getElementById('practiceResultGuidePopup')?.classList.remove('show');
+}
+
+function practiceResultGuideAction(){
+    const popup=document.getElementById('practiceResultGuidePopup');
+    const passed=popup?.dataset.passed==='true';
+    closePracticeResultGuide();
+    if(passed){
+        openCertificateForm();
+    }else{
+        startPractice();
+    }
+}
 
 /* =========================================================
    SCREEN
@@ -8089,6 +9615,8 @@ function showScreen(id){
         certificateModal.classList.remove('show');
     }
 
+    document.querySelectorAll('.media-guide-overlay').forEach(guide=>guide.classList.remove('show'));
+
     if(id === "bermainM1"){
         updatePlayMenuBadges();
     }
@@ -8099,6 +9627,7 @@ function showScreen(id){
 
     if(id === "berlatihHasil"){
         renderPracticeResult();
+        setTimeout(openPracticeResultGuide,120);
     }
 
     if(id === "simulasiMenu"){
@@ -8111,6 +9640,16 @@ function showScreen(id){
 
     if(id === "bermainM3"){
         startWordSearch();
+    }
+
+    if(id === "bermainM4"){
+        if(!document.querySelector('#detectiveChoices .detective-target')){
+            renderDetectiveCase();
+        }
+    }
+
+    if(id !== "bermainM6"){
+        closeCatchInstructions();
     }
 
     /* Hentikan video apersepsi ketika berpindah ke screen lain */
@@ -9235,12 +10774,12 @@ function updateWordSearchStatus(){
 }
 
 /* =========================================================
-   M4 - DETEKTIF PENYEBAB
+   M4 - DETEKTIF PENYEBAB: PANAH TARGET BERGERAK
 ========================================================= */
 
 const detectiveCases=[
     {
-        scenario:'Desa Bukit Lestari berada di kawasan perbukitan dan mengalami hujan deras selama beberapa hari. Pilih 3 data paling relevan untuk menganalisis potensi longsor.',
+        scenario:'Desa Bukit Lestari berada di kawasan perbukitan dan mengalami hujan deras selama beberapa hari. Bidik 3 data paling relevan untuk menganalisis potensi longsor.',
         choices:[
             ['⛰️ Kemiringan lereng 45°',true],
             ['🌧️ Curah hujan tinggi',true],
@@ -9252,7 +10791,7 @@ const detectiveCases=[
         explain:'Kemiringan lereng, curah hujan, dan kondisi vegetasi berkaitan langsung dengan kestabilan lereng.'
     },
     {
-        scenario:'Kelurahan Rawa Indah berada di dataran rendah dan sering tergenang setelah hujan lebat. Pilih 3 data paling relevan untuk menganalisis potensi banjir.',
+        scenario:'Kelurahan Rawa Indah berada di dataran rendah dan sering tergenang setelah hujan lebat. Bidik 3 data paling relevan untuk menganalisis potensi banjir.',
         choices:[
             ['🌧️ Intensitas hujan',true],
             ['🏞️ Kapasitas sungai',true],
@@ -9264,7 +10803,7 @@ const detectiveCases=[
         explain:'Hujan, kapasitas sungai, dan kondisi drainase merupakan informasi yang relevan untuk menganalisis potensi banjir.'
     },
     {
-        scenario:'Desa Sumber Kering mengalami kekurangan air pada musim kemarau. Pilih 3 data paling relevan untuk menganalisis potensi kekeringan.',
+        scenario:'Desa Sumber Kering mengalami kekurangan air pada musim kemarau. Bidik 3 data paling relevan untuk menganalisis potensi kekeringan.',
         choices:[
             ['☀️ Lama musim kering',true],
             ['🌦️ Curah hujan',true],
@@ -9280,64 +10819,203 @@ const detectiveCases=[
 let detectiveIndex=0;
 let detectiveHadWrong=false;
 let detectiveCompletedCurrent=false;
+let detectiveHits=0;
+let detectiveShots=0;
+let detectiveShotLocked=false;
+let detectiveSolvedCases=new Set();
+let detectivePerfectCases=new Set();
+
+function shuffleDetectiveChoices(items){
+    const arr=[...items];
+    for(let i=arr.length-1;i>0;i--){
+        const j=Math.floor(Math.random()*(i+1));
+        [arr[i],arr[j]]=[arr[j],arr[i]];
+    }
+    return arr;
+}
 
 function renderDetectiveCase(){
     const q=detectiveCases[detectiveIndex];
     const num=document.getElementById('detectiveCaseNo');
     const scenario=document.getElementById('detectiveScenario');
-    const grid=document.getElementById('detectiveChoices');
-    if(!q || !num || !scenario || !grid) return;
+    const layer=document.getElementById('detectiveChoices');
+    const hitEl=document.getElementById('detectiveHitCount');
+    const shotEl=document.getElementById('detectiveShotCount');
+    const next=document.getElementById('detectiveNextBtn');
+    if(!q || !num || !scenario || !layer) return;
 
     detectiveHadWrong=false;
     detectiveCompletedCurrent=false;
+    detectiveHits=0;
+    detectiveShots=0;
+    detectiveShotLocked=false;
+
     num.textContent='KASUS '+(detectiveIndex+1)+' / '+detectiveCases.length;
     scenario.textContent=q.scenario;
-    grid.innerHTML='';
-    q.choices.forEach(([label,correct])=>{
+    layer.innerHTML='';
+
+    const slots=[
+        {left:'3%', top:'5%',  x1:'-3%',x2:'5%', y1:'-3%',y2:'4%'},
+        {left:'35.5%',top:'5%',x1:'4%',x2:'-5%',y1:'3%',y2:'-3%'},
+        {left:'68%',top:'5%', x1:'-4%',x2:'4%', y1:'3%',y2:'-3%'},
+        {left:'3%', top:'34%', x1:'5%',x2:'-3%',y1:'-3%',y2:'3%'},
+        {left:'35.5%',top:'34%',x1:'-5%',x2:'5%',y1:'3%',y2:'-3%'},
+        {left:'68%',top:'34%',x1:'4%',x2:'-4%',y1:'-3%',y2:'3%'}
+    ];
+
+    shuffleDetectiveChoices(q.choices).forEach(([label,correct],index)=>{
+        const slot=slots[index];
         const btn=document.createElement('button');
-        btn.className='detective-choice';
+        btn.className='detective-target';
         btn.dataset.correct=String(correct);
+        btn.dataset.hit='false';
         btn.textContent=label;
-        btn.onclick=()=>{
-            if(detectiveCompletedCurrent) return;
-            btn.classList.toggle('selected');
-        };
-        grid.appendChild(btn);
+        btn.style.left=slot.left;
+        btn.style.top=slot.top;
+        btn.style.setProperty('--x1',slot.x1);
+        btn.style.setProperty('--x2',slot.x2);
+        btn.style.setProperty('--y1',slot.y1);
+        btn.style.setProperty('--y2',slot.y2);
+        btn.style.setProperty('--duration',(2.15+Math.random()*1.25).toFixed(2)+'s');
+        btn.style.setProperty('--delay',(-Math.random()*1.8).toFixed(2)+'s');
+
+        btn.addEventListener('pointerdown',event=>{
+            event.preventDefault();
+            fireDetectiveArrow(btn,event);
+        });
+
+        layer.appendChild(btn);
     });
-    document.getElementById('detectiveCheckBtn').style.display='inline-block';
-    document.getElementById('detectiveNextBtn').style.display='none';
-    setGameFeedback('detectiveFeedback','info','Pilih tepat tiga informasi.');
+
+    if(hitEl) hitEl.textContent='0 / 3';
+    if(shotEl) shotEl.textContent='0';
+    if(next) next.style.display='none';
+
+    setGameFeedback('detectiveFeedback','info','Bidik tiga kartu bergerak yang paling relevan. Kartu salah akan ditandai sebagai tembakan keliru.');
 }
 
-function checkDetectiveCase(){
-    if(detectiveCompletedCurrent) return;
-    const selected=[...document.querySelectorAll('#detectiveChoices .detective-choice.selected')];
-    if(selected.length!==3){
-        setGameFeedback('detectiveFeedback','bad','Pilih tepat 3 informasi sebelum memeriksa jawaban.');
-        return;
-    }
-    const correct=selected.every(btn=>btn.dataset.correct==='true');
-    if(correct){
-        detectiveCompletedCurrent=true;
-        playStats.detectiveAnswered=Math.max(playStats.detectiveAnswered,detectiveIndex+1);
-        if(!detectiveHadWrong) playStats.detectiveCorrect++;
-        document.querySelectorAll('#detectiveChoices .detective-choice').forEach(btn=>{
-            btn.disabled=true;
-            if(btn.dataset.correct==='true') btn.classList.add('correct');
+function fireDetectiveArrow(target,event){
+    if(detectiveCompletedCurrent || detectiveShotLocked) return;
+    if(!target || target.dataset.hit==='true') return;
+
+    const stage=document.getElementById('detectiveArrowStage');
+    const bow=document.getElementById('detectiveBow');
+    if(!stage || !bow) return;
+
+    detectiveShotLocked=true;
+    detectiveShots++;
+    const shotEl=document.getElementById('detectiveShotCount');
+    if(shotEl) shotEl.textContent=detectiveShots;
+
+    target.classList.add('aiming');
+
+    const stageRect=stage.getBoundingClientRect();
+    const bowRect=bow.getBoundingClientRect();
+    const targetRect=target.getBoundingClientRect();
+
+    const startX=bowRect.left-stageRect.left+bowRect.width/2-17;
+    const startY=bowRect.top-stageRect.top+bowRect.height/2-12;
+    const targetX=targetRect.left-stageRect.left+targetRect.width/2-17;
+    const targetY=targetRect.top-stageRect.top+targetRect.height/2-12;
+
+    const dx=targetX-startX;
+    const dy=targetY-startY;
+    const angle=Math.atan2(dy,dx)*180/Math.PI;
+
+    const arrow=document.createElement('div');
+    arrow.className='detective-arrow';
+    arrow.textContent='➤';
+    arrow.style.transform=`translate(${startX}px,${startY}px) rotate(${angle}deg)`;
+    stage.appendChild(arrow);
+
+    requestAnimationFrame(()=>{
+        requestAnimationFrame(()=>{
+            arrow.style.transform=`translate(${targetX}px,${targetY}px) rotate(${angle}deg)`;
         });
-        setGameFeedback('detectiveFeedback','ok','Tepat! '+detectiveCases[detectiveIndex].explain+' Inilah proses abstraksi: memilih informasi yang relevan.');
-        document.getElementById('detectiveCheckBtn').style.display='none';
-        const next=document.getElementById('detectiveNextBtn');
-        next.style.display='inline-block';
-        next.textContent=detectiveIndex===detectiveCases.length-1?'Lanjut ke Mitigasi →':'Kasus Berikutnya →';
-        updatePlayMenuBadges();
+    });
+
+    setTimeout(()=>{
+        if(arrow.parentElement) arrow.remove();
+        resolveDetectiveHit(target,targetX,targetY);
+        detectiveShotLocked=false;
+    },320);
+}
+
+function resolveDetectiveHit(target,x,y){
+    if(!target || detectiveCompletedCurrent) return;
+
+    const stage=document.getElementById('detectiveArrowStage');
+    const correct=target.dataset.correct==='true';
+    target.classList.remove('aiming');
+
+    if(stage){
+        const impact=document.createElement('div');
+        impact.className='detective-impact';
+        impact.textContent=correct?'🎯':'💥';
+        impact.style.left=(x+1)+'px';
+        impact.style.top=(y-6)+'px';
+        stage.appendChild(impact);
+        setTimeout(()=>impact.remove(),560);
+    }
+
+    if(correct){
+        target.dataset.hit='true';
+        target.disabled=true;
+        target.classList.add('hit-correct');
+        target.textContent='✅ '+target.textContent;
+
+        detectiveHits++;
+        const hitEl=document.getElementById('detectiveHitCount');
+        if(hitEl) hitEl.textContent=detectiveHits+' / 3';
+
+        if(detectiveHits<3){
+            setGameFeedback('detectiveFeedback','ok','Tepat! Lanjutkan membidik data relevan berikutnya.');
+        }else{
+            completeDetectiveCase();
+        }
     }else{
         detectiveHadWrong=true;
-        selected.forEach(btn=>{
-            if(btn.dataset.correct==='false') btn.classList.add('wrong');
-        });
-        setGameFeedback('detectiveFeedback','bad','Belum tepat. Pilih data yang secara langsung berkaitan dengan proses bencana pada kasus tersebut.');
+        target.classList.add('hit-wrong');
+        setGameFeedback('detectiveFeedback','bad','Panah mengenai data yang tidak relevan. Amati hubungan data dengan proses bencananya, lalu bidik lagi.');
+        setTimeout(()=>{
+            if(target && target.parentElement && target.dataset.hit!=='true'){
+                target.classList.remove('hit-wrong');
+            }
+        },520);
     }
+}
+
+function completeDetectiveCase(){
+    detectiveCompletedCurrent=true;
+    detectiveSolvedCases.add(detectiveIndex);
+
+    if(!detectiveHadWrong){
+        detectivePerfectCases.add(detectiveIndex);
+    }
+
+    playStats.detectiveAnswered=detectiveSolvedCases.size;
+    playStats.detectiveCorrect=detectivePerfectCases.size;
+
+    document.querySelectorAll('#detectiveChoices .detective-target').forEach(btn=>{
+        btn.disabled=true;
+        if(btn.dataset.correct==='true' && btn.dataset.hit!=='true'){
+            btn.classList.add('hit-correct');
+        }
+    });
+
+    setGameFeedback(
+        'detectiveFeedback',
+        'ok',
+        'Kasus selesai! '+detectiveCases[detectiveIndex].explain+' Kamu telah menyaring informasi relevan sambil membidik target yang bergerak.'
+    );
+
+    const next=document.getElementById('detectiveNextBtn');
+    if(next){
+        next.style.display='inline-block';
+        next.textContent=detectiveIndex===detectiveCases.length-1?'Lanjut ke Mitigasi →':'Kasus Berikutnya →';
+    }
+
+    updatePlayMenuBadges();
 }
 
 function nextDetectiveCase(){
@@ -9531,6 +11209,38 @@ const catchDecoyWords = [
 ];
 
 
+let catchPlayerCount = 3;
+
+function setCatchPlayerCount(count){
+    catchPlayerCount=Math.max(1,Math.min(6,Number(count)||1));
+
+    const display=document.getElementById('catchPlayers');
+    if(display) display.textContent=catchPlayerCount;
+
+    document.querySelectorAll('.catch-player-btn').forEach(btn=>{
+        btn.classList.toggle('active',Number(btn.textContent)===catchPlayerCount);
+    });
+}
+
+function openCatchInstructions(){
+    const popup=document.getElementById('catchInstructionPopup');
+    if(popup){
+        setCatchPlayerCount(catchPlayerCount);
+        popup.classList.add('show');
+    }
+}
+
+function closeCatchInstructions(){
+    const popup=document.getElementById('catchInstructionPopup');
+    if(popup) popup.classList.remove('show');
+}
+
+function closeCatchInstructionByBackground(event){
+    if(event.target===event.currentTarget){
+        closeCatchInstructions();
+    }
+}
+
 let catchRunning = false;
 
 let catchTime = 30;
@@ -9650,13 +11360,20 @@ function spawnCatchWord(){
         (5 + Math.random()*maxTop) + "%";
 
 
-    button.onclick =
-        event =>
-            hitCatchWord(
-                button,
-                isCorrect,
-                event
-            );
+    button.dataset.hit = "false";
+
+    button.addEventListener("pointerdown", event => {
+        event.preventDefault();
+
+        if(button.dataset.hit === "true") return;
+        button.dataset.hit = "true";
+
+        hitCatchWord(
+            button,
+            isCorrect,
+            event
+        );
+    }, {once:true});
 
 
     arena.appendChild(button);
@@ -9837,6 +11554,9 @@ function updateCatchHUD(){
     if(wrong) wrong.textContent = catchWrong;
 
     if(combo) combo.textContent = catchCombo;
+
+    const players = document.getElementById("catchPlayers");
+    if(players) players.textContent = catchPlayerCount;
 }
 
 
@@ -9902,6 +11622,8 @@ function finishCatchGame(){
                 🎯 Akurasi: ${accuracy}%
                 &nbsp; • &nbsp;
                 🔥 Combo terbaik: x${catchBestCombo}
+                &nbsp; • &nbsp;
+                👥 Pemain: ${catchPlayerCount}
             </p>
 
             <button
@@ -9973,13 +11695,12 @@ function resetCatchGame(){
                 </div>
 
                 <h3>
-                    Siap Menguji Kecepatanmu?
+                    Siap Bermain Bersama?
                 </h3>
 
                 <p>
-                    Kata akan muncul dengan cepat.
-                    Tekan hanya istilah yang berkaitan
-                    dengan materi potensi bencana alam.
+                    Semua pemain dapat menyentuh kata yang berbeda secara bersamaan.
+                    Tekan hanya istilah yang berkaitan dengan materi potensi bencana alam.
                 </p>
 
                 <button
@@ -10036,7 +11757,7 @@ function renderPlayResults(){
 function resetAllPlayGames(){
     Object.assign(playStats,{
         matchTotal:6,matchCorrect:0,
-        regionTotal:4,regionCorrect:0,regionAnswered:0,
+        regionTotal:8,regionCorrect:0,regionAnswered:0,
         detectiveTotal:3,detectiveCorrect:0,detectiveAnswered:0,
         mitigationTotal:2,mitigationCorrect:0,mitigationAnswered:0,
         quickTotal:6,quickCorrect:0,quickAnswered:0
@@ -10048,6 +11769,11 @@ function resetAllPlayGames(){
     detectiveIndex=0;
     detectiveHadWrong=false;
     detectiveCompletedCurrent=false;
+    detectiveHits=0;
+    detectiveShots=0;
+    detectiveShotLocked=false;
+    detectiveSolvedCases.clear();
+    detectivePerfectCases.clear();
     renderDetectiveCase();
 
     mitigationIndex=0;
@@ -10073,12 +11799,53 @@ function initPlayGames(){
     renderMitigationCase(true);
 
     resetCatchGame();
+    setCatchPlayerCount(catchPlayerCount);
 
     updatePlayMenuBadges();
 }
 
 initPlayGames();
 
+function resetSemuaProgres(){
+    document
+        .getElementById('resetProgressPopup')
+        ?.classList.add('show');
+}
+
+function tutupResetProgressPopup(){
+    document
+        .getElementById('resetProgressPopup')
+        ?.classList.remove('show');
+}
+
+
+function konfirmasiResetSemuaProgres(){
+
+    // Hapus penyimpanan browser
+    localStorage.removeItem('practiceScore');
+    localStorage.removeItem('simulationCompleted');
+
+    // Reset permainan
+    if(typeof resetAllPlayGames === 'function'){
+        resetAllPlayGames();
+    }
+
+    // Reset latihan
+    practiceIndex = 0;
+    practiceScore = 0;
+    practiceAnswered = false;
+    practiceAnswers = [];
+
+    // Reset simulasi
+    simulationCompleted = {};
+    currentSimSelections = {};
+    simulationRunning = false;
+
+    tutupResetProgressPopup();
+
+    // Kembali ke kondisi awal
+    location.reload();
+}
 
 /* =========================================================
    MENU BERLATIH - 10 SOAL PILIHAN GANDA
@@ -10325,6 +12092,14 @@ function renderPracticeResult(){
     if(titleEl) titleEl.textContent=title;
     if(textEl) textEl.textContent='Kamu menjawab '+practiceScore+' dari 10 soal dengan benar. '+message;
 
+    const certificateBtn=document.getElementById('practiceCertificateBtn');
+    if(certificateBtn){
+        const passed=score100>=PRACTICE_PASS_SCORE;
+        certificateBtn.disabled=!passed;
+        certificateBtn.textContent=passed?'🏆 Cetak Sertifikat (Lulus)':'🔒 Sertifikat (Minimal 75)';
+        certificateBtn.title=passed?'Cetak sertifikat tanda lulus latihan soal':'Raih skor minimal 75 untuk mencetak sertifikat';
+    }
+
     if(dots){
         dots.innerHTML='';
         for(let i=0;i<practiceQuestions.length;i++){
@@ -10351,6 +12126,12 @@ function getTodayIndonesianDate(){
 }
 
 function openCertificateForm(){
+    const score100=practiceScore*10;
+    if(score100<PRACTICE_PASS_SCORE){
+        openPracticeResultGuide();
+        return;
+    }
+
     const modal=document.getElementById('certificateModal');
     const dateInput=document.getElementById('certificateDate');
 
@@ -10491,6 +12272,8 @@ body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef6f8;color:#1
   </div>
   <div class="note">Jika posisi teks belum pas dengan template, ubah nilai <b>top</b> pada class <b>.cert-name</b>, <b>.cert-classschool</b>, <b>.cert-score</b>, dan <b>.cert-date</b> di fungsi <b>printPracticeCertificate()</b>.</div>
 </div>
+
+
 </body>
 </html>`);
     popup.document.close();
@@ -10503,6 +12286,162 @@ window.addEventListener('click',function(e){
         closeCertificateForm();
     }
 });
+
+/* =========================================================
+   PANDUAN & PENJELASAN DINAMIS SIMULASI
+========================================================= */
+const simulationGuideData={
+    gempa:{
+        icon:'🌍',title:'Panduan Laboratorium Gempa',
+        subtitle:'Uji bagaimana kekuatan gempa, jenis tanah, dan konstruksi bangunan memengaruhi kerusakan rumah.',
+        note:'🧠 Cobalah beberapa kombinasi. Bandingkan hasil ketika hanya satu variabel yang kamu ubah.',
+        steps:[
+            ['Atur Kekuatan Gempa','Geser slider kekuatan gempa dari ringan menuju merusak.'],
+            ['Pilih Kondisi Wilayah','Tentukan jenis tanah: keras/batu atau lunak/rawa.'],
+            ['Pilih Konstruksi Rumah','Bandingkan bangunan tahan gempa dengan bangunan rapuh tanpa tulangan.'],
+            ['Jalankan & Jelaskan','Tekan Mulai Simulasi, amati tingkat risiko, lalu buka Penjelasan & Kesimpulan.']
+        ]
+    },
+    banjir:{
+        icon:'🌧️',title:'Panduan Laboratorium Banjir Perkotaan',
+        subtitle:'Uji hubungan curah hujan, daerah resapan, dan kondisi selokan terhadap tinggi genangan.',
+        note:'🧠 Perhatikan bahwa hujan adalah faktor alam, sedangkan resapan dan drainase dapat dipengaruhi aktivitas manusia.',
+        steps:[
+            ['Pilih Intensitas Hujan','Bandingkan hujan deras biasa dengan hujan badai ekstrem.'],
+            ['Atur Daerah Resapan','Pilih wilayah dengan banyak taman/pohon atau wilayah penuh aspal/beton.'],
+            ['Atur Kondisi Selokan','Bandingkan saluran lebar dan bersih dengan saluran sempit penuh sampah.'],
+            ['Jalankan & Jelaskan','Tekan Mulai Simulasi, amati genangan, lalu baca Penjelasan & Kesimpulan.']
+        ]
+    },
+    tsunami:{
+        icon:'🌊',title:'Panduan Laboratorium Tsunami',
+        subtitle:'Uji pengaruh pemicu di laut, bentuk pesisir, dan keberadaan mangrove terhadap sapuan gelombang.',
+        note:'🧠 Mangrove bukan pengganti evakuasi. Vegetasi pesisir merupakan salah satu lapisan mitigasi untuk membantu mengurangi energi gelombang.',
+        steps:[
+            ['Pilih Pemicu Laut','Bandingkan gempa sedang dengan megathrust atau longsor laut.'],
+            ['Pilih Bentuk Pesisir','Bandingkan pantai lurus terbuka dengan teluk yang menyempit.'],
+            ['Atur Mangrove','Bandingkan pesisir dengan mangrove lebat dan pesisir yang gundul.'],
+            ['Jalankan & Jelaskan','Tekan Mulai Simulasi, amati sapuan gelombang, lalu buka Penjelasan & Kesimpulan.']
+        ]
+    }
+};
+
+let pendingSimulationType=null;
+
+function openSimulationGuide(type){
+    const data=simulationGuideData[type];
+    const popup=document.getElementById('simulationGuidePopup');
+    if(!data || !popup) return;
+    pendingSimulationType=type;
+    document.getElementById('simulationGuideIcon').textContent=data.icon;
+    document.getElementById('simulationGuideTitle').textContent=data.title;
+    document.getElementById('simulationGuideSubtitle').textContent=data.subtitle;
+    document.getElementById('simulationGuideNote').textContent=data.note;
+    const steps=document.getElementById('simulationGuideSteps');
+    steps.innerHTML='';
+    data.steps.forEach((item,index)=>{
+        const div=document.createElement('div');
+        div.className='media-guide-step';
+        div.innerHTML='<div class="step-no">'+(index+1)+'</div><div><strong>'+item[0]+'</strong><span>'+item[1]+'</span></div>';
+        steps.appendChild(div);
+    });
+    popup.classList.add('show');
+}
+
+function cancelSimulationGuide(){
+    document.getElementById('simulationGuidePopup')?.classList.remove('show');
+    pendingSimulationType=null;
+}
+
+function beginSimulationFromGuide(){
+    const type=pendingSimulationType;
+    document.getElementById('simulationGuidePopup')?.classList.remove('show');
+    pendingSimulationType=null;
+    if(type) launchDisasterSimulation(type);
+}
+
+function getSimulationDynamicExplanation(type,selections,level){
+    if(type==='gempa'){
+        const m=Number(selections.kekuatan ?? 5);
+        const tanah=Number(selections.tanah ?? 0);
+        const rumah=Number(selections.rumah ?? 0);
+        const parts=[];
+        parts.push('Gempa berkekuatan M '+m+' memberikan tingkat guncangan '+(m<=4?'relatif ringan':m<=6?'cukup kuat':'sangat kuat')+'.');
+        parts.push(tanah===1?'Tanah lunak/rawa cenderung memperbesar guncangan yang dirasakan bangunan.':'Tanah keras/batu relatif lebih stabil sehingga penguatan guncangan lebih kecil.');
+        parts.push(rumah===1?'Bangunan bata tanpa tulangan memiliki kerentanan tinggi karena sambungan strukturnya lebih mudah gagal.':'Bangunan beton bertulang yang dirancang tahan gempa membantu menyalurkan gaya gempa sehingga risiko runtuh berkurang.');
+        if(level==='high') parts.push('Kombinasi input tersebut membuat kerentanan dan bahaya bertemu pada tingkat tinggi sehingga kerusakan menjadi ekstrem.');
+        else if(level==='medium') parts.push('Sebagian faktor sudah menekan risiko, tetapi masih ada faktor lain yang membuat kerusakan tetap mungkin terjadi.');
+        else parts.push('Kombinasi input berhasil menekan kerentanan sehingga dampak yang tampak lebih rendah.');
+        return parts.join(' ');
+    }
+    if(type==='banjir'){
+        const hujan=Number(selections.hujan ?? 0);
+        const resapan=Number(selections.resapan ?? 0);
+        const saluran=Number(selections.saluran ?? 0);
+        const parts=[];
+        parts.push(hujan===1?'Hujan badai ekstrem menghasilkan limpasan air dalam jumlah besar dalam waktu singkat.':'Hujan deras biasa tetap menghasilkan limpasan, tetapi tekanannya terhadap sistem kota lebih rendah dibanding badai ekstrem.');
+        parts.push(resapan===1?'Permukaan aspal dan beton mengurangi kemampuan air meresap ke dalam tanah sehingga lebih banyak air mengalir di permukaan.':'Taman, pepohonan, dan tanah terbuka menyediakan ruang resapan sehingga sebagian air dapat masuk ke tanah.');
+        parts.push(saluran===1?'Selokan sempit dan penuh sampah menghambat aliran sehingga air cepat meluap.':'Selokan yang lebar dan bersih membantu mengalirkan limpasan dengan lebih cepat.');
+        if(level==='high') parts.push('Ketiga faktor tersebut saling memperkuat sehingga genangan berkembang menjadi banjir berat.');
+        else if(level==='medium') parts.push('Ada faktor yang memperbesar limpasan, namun faktor lainnya masih membantu menahan atau mengalirkan air.');
+        else parts.push('Kombinasi resapan dan drainase yang baik mampu mengurangi dampak hujan pada wilayah perkotaan.');
+        return parts.join(' ');
+    }
+    if(type==='tsunami'){
+        const pemicu=Number(selections.pemicu ?? 0);
+        const pantai=Number(selections.pantai ?? 0);
+        const mangrove=Number(selections.mangrove ?? 0);
+        const parts=[];
+        parts.push(pemicu===1?'Megathrust atau longsor bawah laut dapat memindahkan massa air lebih besar sehingga energi gelombang awal meningkat.':'Pemicu gempa sedang pada model ini menghasilkan gangguan massa air yang lebih kecil.');
+        parts.push(pantai===1?'Teluk yang menyempit dapat memusatkan aliran air dan meningkatkan tinggi serta daya dorong gelombang di bagian tertentu pesisir.':'Pantai lurus terbuka tidak memusatkan aliran sekuat teluk menyempit pada model ini.');
+        parts.push(mangrove===1?'Pesisir tanpa mangrove kehilangan salah satu penghambat alami yang dapat membantu mengurangi sebagian energi dan aliran debris.':'Mangrove lebat membantu menambah hambatan terhadap aliran, walaupun tidak menghilangkan bahaya tsunami dan tidak menggantikan evakuasi.');
+        if(level==='high') parts.push('Kombinasi pemicu kuat, bentuk pesisir rentan, dan perlindungan vegetasi rendah membuat sapuan gelombang menjadi ekstrem.');
+        else if(level==='medium') parts.push('Sebagian kondisi meningkatkan bahaya, sementara kondisi lain masih membantu mengurangi dampaknya.');
+        else parts.push('Pada kombinasi model ini, faktor penguat bahaya lebih terbatas sehingga dampak relatif lebih rendah.');
+        return parts.join(' ');
+    }
+    return 'Hasil simulasi terbentuk dari kombinasi variabel yang kamu pilih.';
+}
+
+function getSimulationDynamicConclusion(type,selections,level){
+    const levelPhrase=level==='high'?'risiko sangat tinggi':level==='medium'?'risiko menengah':'risiko relatif lebih rendah';
+    if(type==='gempa') return 'Kesimpulannya, '+levelPhrase+' pada skenario ini muncul dari interaksi kekuatan gempa dengan kondisi tanah dan kerentanan bangunan. Mitigasi penting bukan menghentikan gempa, melainkan mengurangi kerentanan melalui pemilihan lokasi yang aman dan konstruksi tahan gempa.';
+    if(type==='banjir') return 'Kesimpulannya, '+levelPhrase+' pada skenario ini dipengaruhi bukan hanya oleh hujan, tetapi juga kemampuan wilayah menyerap dan mengalirkan air. Memperbanyak area resapan serta menjaga drainase tetap bersih dapat menurunkan dampak banjir perkotaan.';
+    if(type==='tsunami') return 'Kesimpulannya, '+levelPhrase+' pada skenario ini terbentuk dari kekuatan pemicu, bentuk pesisir, dan kondisi pelindung alami. Mitigasi utama tetap peringatan dini dan evakuasi ke tempat aman, sedangkan mangrove dapat menjadi lapisan perlindungan tambahan di pesisir.';
+    return 'Kesimpulan diperoleh dari hubungan antara variabel yang dipilih dan dampak yang terlihat pada simulasi.';
+}
+
+function openSimulationExplanation(){
+    const result=simulationCompleted[currentSimulationType];
+    const config=simulationConfigs[currentSimulationType];
+    const popup=document.getElementById('simulationExplanationPopup');
+    if(!result || !config || !popup) return;
+
+    const levelLabel=result.level==='low'?'🟢 Risiko Rendah / Aman':result.level==='medium'?'🟡 Risiko Menengah':'🔴 Risiko Ekstrem';
+    const levelEl=document.getElementById('simulationExplanationLevel');
+    levelEl.textContent=levelLabel;
+    levelEl.className='sim-explanation-level '+result.level;
+    document.getElementById('simulationExplanationIcon').textContent=config.icon;
+    document.getElementById('simulationExplanationTitle').textContent='Penjelasan Hasil '+config.title;
+    document.getElementById('simulationExplanationSubtitle').textContent=config.texts[result.level];
+
+    const summary=document.getElementById('simulationInputSummary');
+    summary.innerHTML='';
+    config.variables.forEach(variable=>{
+        const chip=document.createElement('div');
+        chip.className='sim-input-chip';
+        chip.innerHTML='<strong>'+variable.label+'</strong><span>'+getSelectedLabel(variable,result.selections[variable.key])+'</span>';
+        summary.appendChild(chip);
+    });
+
+    document.getElementById('simulationPhenomenonText').textContent=getSimulationDynamicExplanation(currentSimulationType,result.selections,result.level);
+    document.getElementById('simulationConclusionPopupText').textContent=getSimulationDynamicConclusion(currentSimulationType,result.selections,result.level);
+    popup.classList.add('show');
+}
+
+function closeSimulationExplanation(){
+    document.getElementById('simulationExplanationPopup')?.classList.remove('show');
+}
 
 /* =========================================================
    SIMULASI - 3 LAB BENCANA UTAMA (ANIMASI VISUAL)
@@ -10598,6 +12537,11 @@ function renderSimulationMenu() {
 }
 
 function openDisasterSimulation(type) {
+    if (!simulationConfigs[type]) return;
+    openSimulationGuide(type);
+}
+
+function launchDisasterSimulation(type) {
     if (!simulationConfigs[type]) return;
     currentSimulationType = type;
     currentSimSelections = {};
@@ -10807,7 +12751,6 @@ function runSimulation() {
         feedback.className = 'sim-lab-feedback ' + level;
         feedback.innerHTML = '<b>' + config.resultLabel + '</b> • ' + chosen.join(' • ');
 
-        document.getElementById('simConclusionText').textContent = config.conclusion;
         document.getElementById('simConclusionBox').classList.add('show');
 
         simulationCompleted[currentSimulationType] = { level: level, chosen: chosen, selections: { ...currentSimSelections } };
